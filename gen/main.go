@@ -35,13 +35,6 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	buf := new(bytes.Buffer)
-	if err := json.Indent(buf, respBodyBytes, "", "  "); err != nil {
-		log.Fatal(err)
-	}
-	if err := os.WriteFile("schema.json", buf.Bytes(), 0600); err != nil {
-		log.Fatal(err)
-	}
 	var respBody struct {
 		Data struct {
 			Schema struct {
@@ -138,7 +131,7 @@ func main() {
 	sort.Slice(typesToOutput, func(i, j int) bool {
 		return typesToOutput[i].Name < typesToOutput[j].Name
 	})
-	buf.Reset()
+	buf := new(bytes.Buffer)
 	printfIndent := 0
 	printf := func(format string, args ...any) {
 		fmt.Fprintf(buf, strings.Repeat("\t", printfIndent)+format, args...)
