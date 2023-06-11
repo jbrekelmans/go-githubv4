@@ -29,3 +29,6 @@ jobs:
         export GITHUB_TOKEN
         go run .
       working-directory: gen
+
+    - name: Create Pull Request
+      uses: peter-evans/create-pull-request@v5
