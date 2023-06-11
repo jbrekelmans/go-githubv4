@@ -2,6 +2,10 @@ on:
   schedule:
     - cron: '30 5 * * 1,3'
   workflow_dispatch: {}
+  
+  # This is for testing only. TODO remove this
+  push:
+    branches: [ "gen-workflow" ]
 
 permissions:
   contents: write
