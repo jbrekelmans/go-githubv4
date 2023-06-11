@@ -2,7 +2,7 @@ name: Gen
 
 on:
   schedule:
-    - cron: '30 5 * * 1,3'
+    - cron: '0 8 * * *'
   workflow_dispatch: {}
   
   # This is for testing only. TODO remove this
