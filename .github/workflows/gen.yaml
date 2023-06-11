@@ -5,10 +5,6 @@ on:
     - cron: '0 8 * * *'
   workflow_dispatch: {}
   
-  # This is for testing only. TODO remove this
-  push:
-    branches: [ "gen-workflow" ]
-
 permissions:
   contents: write
   pull-requests: write
