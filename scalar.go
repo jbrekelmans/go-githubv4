@@ -189,7 +189,7 @@ func (h *HTML) UnmarshalText(b []byte) error {
 // intended to be human-readable. When expected as an input type,
 // any string (such as "VXNlci0xMA==") or integer (such as 4) input
 // value will be accepted as an ID.
-type ID graphql.ID
+type ID = graphql.ID
 
 // PreciseDateTime represents a GraphQL scalar. Use as the type for variables values in queries/mutations
 // to ensure the variable is declared as PreciseDateTime in GraphQL as expected by the GitHub API.
