@@ -1,6 +1,7 @@
 package githubv4
 
 import (
+	"encoding/json"
 	"math/big"
 	"testing"
 	"time"
@@ -200,6 +201,23 @@ func Test_HTML(t *testing.T) {
 				assert.Equal(t, "x", x.S)
 			}
 		})
+	})
+}
+
+func Test_ID(t *testing.T) {
+	t.Run("Case1", func(t *testing.T) {
+		x := ID{S: "x"}
+		b, err := json.Marshal(x)
+		if assert.NoError(t, err) {
+			assert.Equal(t, `"x"`, string(b))
+		}
+	})
+	t.Run("Case2", func(t *testing.T) {
+		var x ID
+		err := json.Unmarshal([]byte(`"x"`), &x)
+		if assert.NoError(t, err) {
+			assert.Equal(t, "x", x.S)
+		}
 	})
 }
 
