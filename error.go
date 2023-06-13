@@ -16,8 +16,9 @@ func enhanceError(err error) error {
 		return err
 	}
 	enhanced := &Error{
-		Err:     base.Err,
-		Message: base.Message,
+		Err:       base.Err,
+		Message:   base.Message,
+		Operation: base.Operation,
 	}
 	if base.Errors != nil {
 		enhanced.Errors = make([]ErrorItem, 0, len(base.Errors))
@@ -48,6 +49,9 @@ type Error struct {
 	Errors []ErrorItem
 
 	Message string
+
+	// Operation is the GraphQL query/mutation/operation for which the error occurred.
+	Operation string
 }
 
 var _ error = (*Error)(nil)

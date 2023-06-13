@@ -1,7 +1,7 @@
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/jbrekelmans/go-graphql v0.0.0-20230612230820-edc4ffea10ce h1:OV51RJ9qku7Go9lyo0cItduItxIrG30C5PrXe2VpGnM=
-github.com/jbrekelmans/go-graphql v0.0.0-20230612230820-edc4ffea10ce/go.mod h1:IlOWqWueAehC16QS33FrhNPv8decaroqvT1kxmzsiYo=
+github.com/jbrekelmans/go-graphql v0.0.0-20230613044516-6196c6ab1c3e h1:UcuY+lJhCL3/CdffBaq41kpMGbkVaOi0Qn59ABbb8kI=
+github.com/jbrekelmans/go-graphql v0.0.0-20230613044516-6196c6ab1c3e/go.mod h1:IlOWqWueAehC16QS33FrhNPv8decaroqvT1kxmzsiYo=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/shurcooL/graphql v0.0.0-20220606043923-3cf50f8a0a29 h1:B1PEwpArrNp4dkQrfxh/abbBAOZBVp0ds+fBEOUOqOc=

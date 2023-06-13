@@ -3,7 +3,7 @@ module github.com/jbrekelmans/go-githubv4
 go 1.20
 
 require (
-	github.com/jbrekelmans/go-graphql v0.0.0-20230612230820-edc4ffea10ce
+	github.com/jbrekelmans/go-graphql v0.0.0-20230613044516-6196c6ab1c3e
 	github.com/stretchr/testify v1.8.4
 )
 
