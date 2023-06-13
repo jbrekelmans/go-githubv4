@@ -18,14 +18,16 @@ func Test_enhanceError(t *testing.T) {
 	t.Run("Case2", func(t *testing.T) {
 		err1 := errors.New("some err")
 		err2 := &graphql.Error{
-			Err:     err1,
-			Message: "msg",
+			Err:       err1,
+			Message:   "msg",
+			Operation: "query{name}",
 		}
 		err3 := enhanceError(err2)
 		if assert.IsType(t, &Error{}, err3) {
 			assert.Equal(t, &Error{
-				Err:     err1,
-				Message: "msg",
+				Err:       err1,
+				Message:   "msg",
+				Operation: "query{name}",
 			}, err3)
 			assert.Same(t, err1, err3.(*Error).Err)
 		}
