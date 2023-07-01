@@ -1705,10 +1705,8 @@ type CreateRepositoryRulesetInput struct {
 	Conditions RepositoryRuleConditionsInput "json:\"conditions\""
 	// The enforcement level for this ruleset.
 	Enforcement RuleEnforcement "json:\"enforcement\""
-	// The bypass mode for this ruleset.
-	BypassMode *RuleBypassMode "json:\"bypassMode\""
-	// A list of Team or App IDs allowed to bypass rules in this ruleset.
-	BypassActorIDs *[]ID "json:\"bypassActorIds\""
+	// A list of actors that are allowed to bypass rules in this ruleset.
+	BypassActors *[]RepositoryRulesetBypassActorInput "json:\"bypassActors\""
 	// A unique identifier for the client performing the mutation.
 	ClientMutationID *string "json:\"clientMutationId\""
 }
@@ -2243,6 +2241,8 @@ const (
 	DependencyGraphEcosystemRust DependencyGraphEcosystem = "RUST"
 	// DependencyGraphEcosystemPub. Dart packages hosted at pub.dev.
 	DependencyGraphEcosystemPub DependencyGraphEcosystem = "PUB"
+	// DependencyGraphEcosystemSwift. Swift packages.
+	DependencyGraphEcosystemSwift DependencyGraphEcosystem = "SWIFT"
 )
 
 // DeploymentOrder represents ordering options for deployment connections.
@@ -5563,6 +5563,18 @@ const (
 	RepositoryContributionTypePullRequestReview RepositoryContributionType = "PULL_REQUEST_REVIEW"
 )
 
+// RepositoryIDConditionTargetInput represents parameters to be used for the repository_id condition.
+type RepositoryIDConditionTargetInput struct {
+	// One of these repo IDs must match the repo.
+	RepositoryIDs []ID "json:\"repositoryIds\""
+}
+
+// Compile-time assertion that RepositoryIDConditionTargetInput implements the Input interface.
+var _ Input = (*RepositoryIDConditionTargetInput)(nil)
+
+// isInput implements the Input interface.
+func (RepositoryIDConditionTargetInput) isInput() {}
+
 // RepositoryInteractionLimit represents a repository interaction limit.
 type RepositoryInteractionLimit string
 
@@ -5753,6 +5765,8 @@ type RepositoryRuleConditionsInput struct {
 	RefName *RefNameConditionTargetInput "json:\"refName\""
 	// Configuration for the repository_name condition.
 	RepositoryName *RepositoryNameConditionTargetInput "json:\"repositoryName\""
+	// Configuration for the repository_id condition.
+	RepositoryID *RepositoryIDConditionTargetInput "json:\"repositoryId\""
 }
 
 // Compile-time assertion that RepositoryRuleConditionsInput implements the Input interface.
@@ -5810,6 +5824,34 @@ const (
 	// RepositoryRuleTypeTagNamePattern. Tag name pattern.
 	RepositoryRuleTypeTagNamePattern RepositoryRuleType = "TAG_NAME_PATTERN"
 )
+
+// RepositoryRulesetBypassActorBypassMode represents the bypass mode for a specific actor on a ruleset.
+type RepositoryRulesetBypassActorBypassMode string
+
+const (
+	// RepositoryRulesetBypassActorBypassModeAlways. The actor can always bypass rules.
+	RepositoryRulesetBypassActorBypassModeAlways RepositoryRulesetBypassActorBypassMode = "ALWAYS"
+	// RepositoryRulesetBypassActorBypassModePullRequest. The actor can only bypass rules via a pull request.
+	RepositoryRulesetBypassActorBypassModePullRequest RepositoryRulesetBypassActorBypassMode = "PULL_REQUEST"
+)
+
+// RepositoryRulesetBypassActorInput represents specifies the attributes for a new or updated ruleset bypass actor. Only one of `actor_id`, `repository_role_database_id`, or `organization_admin` should be specified.
+type RepositoryRulesetBypassActorInput struct {
+	// For Team and Integration bypasses, the Team or Integration ID.
+	ActorID *ID "json:\"actorId\""
+	// For role bypasses, the role database ID.
+	RepositoryRoleDatabaseID *int "json:\"repositoryRoleDatabaseId\""
+	// For org admin bupasses, true.
+	OrganizationAdmin *bool "json:\"organizationAdmin\""
+	// The bypass mode for this actor.
+	BypassMode RepositoryRulesetBypassActorBypassMode "json:\"bypassMode\""
+}
+
+// Compile-time assertion that RepositoryRulesetBypassActorInput implements the Input interface.
+var _ Input = (*RepositoryRulesetBypassActorInput)(nil)
+
+// isInput implements the Input interface.
+func (RepositoryRulesetBypassActorInput) isInput() {}
 
 // RepositoryRulesetTarget represents the targets supported for rulesets.
 type RepositoryRulesetTarget string
@@ -6043,24 +6085,6 @@ const (
 	RoleInOrganizationUnaffiliated RoleInOrganization = "UNAFFILIATED"
 )
 
-// RuleBypassMode represents the bypass mode for a rule or ruleset.
-type RuleBypassMode string
-
-const (
-	// RuleBypassModeNone. Bypassing is disabled.
-	RuleBypassModeNone RuleBypassMode = "NONE"
-	// RuleBypassModeRepository. Those with bypass permission at the repository level can bypass.
-	RuleBypassModeRepository RuleBypassMode = "REPOSITORY"
-	// RuleBypassModeOrganization. Those with bypass permission at the organization level can bypass.
-	RuleBypassModeOrganization RuleBypassMode = "ORGANIZATION"
-	// RuleBypassModeOrganizationNone. Bypassing is disabled.
-	RuleBypassModeOrganizationNone RuleBypassMode = "ORGANIZATION_NONE"
-	// RuleBypassModeOrganizationPrsOnly. Those with bypass permission at the organization level can bypass for pull requests only.
-	RuleBypassModeOrganizationPrsOnly RuleBypassMode = "ORGANIZATION_PRS_ONLY"
-	// RuleBypassModeOrganizationAlways. Those with bypass permission at the organization level can always bypass.
-	RuleBypassModeOrganizationAlways RuleBypassMode = "ORGANIZATION_ALWAYS"
-)
-
 // RuleEnforcement represents the level of enforcement for a rule or ruleset.
 type RuleEnforcement string
 
@@ -6201,6 +6225,8 @@ const (
 	SecurityAdvisoryEcosystemRubygems SecurityAdvisoryEcosystem = "RUBYGEMS"
 	// SecurityAdvisoryEcosystemRust. Rust crates.
 	SecurityAdvisoryEcosystemRust SecurityAdvisoryEcosystem = "RUST"
+	// SecurityAdvisoryEcosystemSwift. Swift packages.
+	SecurityAdvisoryEcosystemSwift SecurityAdvisoryEcosystem = "SWIFT"
 )
 
 // SecurityAdvisoryIdentifierFilter represents an advisory identifier to filter results on.
@@ -8638,10 +8664,8 @@ type UpdateRepositoryRulesetInput struct {
 	Conditions *RepositoryRuleConditionsInput "json:\"conditions\""
 	// The enforcement level for this ruleset.
 	Enforcement *RuleEnforcement "json:\"enforcement\""
-	// The bypass mode for this ruleset.
-	BypassMode *RuleBypassMode "json:\"bypassMode\""
-	// A list of Team or App IDs allowed to bypass rules in this ruleset.
-	BypassActorIDs *[]ID "json:\"bypassActorIds\""
+	// A list of actors that are allowed to bypass rules in this ruleset.
+	BypassActors *[]RepositoryRulesetBypassActorInput "json:\"bypassActors\""
 	// A unique identifier for the client performing the mutation.
 	ClientMutationID *string "json:\"clientMutationId\""
 }
