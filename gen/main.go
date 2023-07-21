@@ -175,7 +175,11 @@ func main() {
 				}
 				multiLineComment(descrTrimmed)
 				goType := toGoType(&inputField.Type)
-				printf("%s %s %#v\n", goFieldName, goType, fmt.Sprintf(`json:%#v`, inputField.Name))
+				jsonTag := inputField.Name
+				if strings.HasPrefix(goType, "*") {
+					jsonTag += ",omitempty"
+				}
+				printf("%s %s %#v\n", goFieldName, goType, fmt.Sprintf(`json:%#v`, jsonTag))
 			}
 			printfIndent--
 			printf("}\n\n")
