@@ -88,7 +88,7 @@ func main() {
 					panic(invalidTypeRefErr())
 				}
 				t = t.OfType
-			} else if !strings.HasSuffix(prefix, "*") {
+			} else {
 				prefix += "*"
 			}
 		}
