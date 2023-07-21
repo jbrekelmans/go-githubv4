@@ -5,7 +5,7 @@ type AbortQueuedMigrationsInput struct {
 	// The ID of the organization that is running the migrations.
 	OwnerID ID "json:\"ownerId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AbortQueuedMigrationsInput implements the Input interface.
@@ -19,7 +19,7 @@ type AcceptEnterpriseAdministratorInvitationInput struct {
 	// The id of the invitation being accepted.
 	InvitationID ID "json:\"invitationId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AcceptEnterpriseAdministratorInvitationInput implements the Input interface.
@@ -35,7 +35,7 @@ type AcceptTopicSuggestionInput struct {
 	// The name of the suggested topic.
 	Name string "json:\"name\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AcceptTopicSuggestionInput implements the Input interface.
@@ -61,7 +61,7 @@ type AddAssigneesToAssignableInput struct {
 	// The id of users to add as assignees.
 	AssigneeIDs []ID "json:\"assigneeIds\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddAssigneesToAssignableInput implements the Input interface.
@@ -77,7 +77,7 @@ type AddCommentInput struct {
 	// The contents of the comment.
 	Body string "json:\"body\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddCommentInput implements the Input interface.
@@ -91,11 +91,11 @@ type AddDiscussionCommentInput struct {
 	// The Node ID of the discussion to comment on.
 	DiscussionID ID "json:\"discussionId\""
 	// The Node ID of the discussion comment within this discussion to reply to.
-	ReplyToID *ID "json:\"replyToId\""
+	ReplyToID *ID "json:\"replyToId,omitempty\""
 	// The contents of the comment.
 	Body string "json:\"body\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddDiscussionCommentInput implements the Input interface.
@@ -109,7 +109,7 @@ type AddDiscussionPollVoteInput struct {
 	// The Node ID of the discussion poll option to vote for.
 	PollOptionID ID "json:\"pollOptionId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddDiscussionPollVoteInput implements the Input interface.
@@ -127,9 +127,9 @@ type AddEnterpriseOrganizationMemberInput struct {
 	// The IDs of the enterprise members to add.
 	UserIDs []ID "json:\"userIds\""
 	// The role to assign the users in the organization.
-	Role *OrganizationMemberRole "json:\"role\""
+	Role *OrganizationMemberRole "json:\"role,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddEnterpriseOrganizationMemberInput implements the Input interface.
@@ -145,7 +145,7 @@ type AddEnterpriseSupportEntitlementInput struct {
 	// The login of a member who will receive the support entitlement.
 	Login string "json:\"login\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddEnterpriseSupportEntitlementInput implements the Input interface.
@@ -161,7 +161,7 @@ type AddLabelsToLabelableInput struct {
 	// The ids of the labels to add.
 	LabelIDs []ID "json:\"labelIds\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddLabelsToLabelableInput implements the Input interface.
@@ -175,11 +175,11 @@ type AddProjectCardInput struct {
 	// The Node ID of the ProjectColumn.
 	ProjectColumnID ID "json:\"projectColumnId\""
 	// The content of the card. Must be a member of the ProjectCardItem union.
-	ContentID *ID "json:\"contentId\""
+	ContentID *ID "json:\"contentId,omitempty\""
 	// The note on the card.
-	Note *string "json:\"note\""
+	Note *string "json:\"note,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddProjectCardInput implements the Input interface.
@@ -195,7 +195,7 @@ type AddProjectColumnInput struct {
 	// The name of the column.
 	Name string "json:\"name\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddProjectColumnInput implements the Input interface.
@@ -211,11 +211,11 @@ type AddProjectV2DraftIssueInput struct {
 	// The title of the draft issue. A project item can also be created by providing the URL of an Issue or Pull Request if you have access.
 	Title string "json:\"title\""
 	// The body of the draft issue.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// The IDs of the assignees of the draft issue.
-	AssigneeIDs *[]ID "json:\"assigneeIds\""
+	AssigneeIDs *[]ID "json:\"assigneeIds,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddProjectV2DraftIssueInput implements the Input interface.
@@ -231,7 +231,7 @@ type AddProjectV2ItemByIDInput struct {
 	// The id of the Issue or Pull Request to add.
 	ContentID ID "json:\"contentId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddProjectV2ItemByIDInput implements the Input interface.
@@ -247,45 +247,45 @@ type AddPullRequestReviewCommentInput struct {
 	// **Upcoming Change on 2023-10-01 UTC**
 	// **Description:** `pullRequestId` will be removed. use addPullRequestReviewThread or addPullRequestReviewThreadReply instead
 	// **Reason:** We are deprecating the addPullRequestReviewComment mutation.
-	PullRequestID *ID "json:\"pullRequestId\""
+	PullRequestID *ID "json:\"pullRequestId,omitempty\""
 	// The Node ID of the review to modify.
 	//
 	// **Upcoming Change on 2023-10-01 UTC**
 	// **Description:** `pullRequestReviewId` will be removed. use addPullRequestReviewThread or addPullRequestReviewThreadReply instead
 	// **Reason:** We are deprecating the addPullRequestReviewComment mutation.
-	PullRequestReviewID *ID "json:\"pullRequestReviewId\""
+	PullRequestReviewID *ID "json:\"pullRequestReviewId,omitempty\""
 	// The SHA of the commit to comment on.
 	//
 	// **Upcoming Change on 2023-10-01 UTC**
 	// **Description:** `commitOID` will be removed. use addPullRequestReviewThread or addPullRequestReviewThreadReply instead
 	// **Reason:** We are deprecating the addPullRequestReviewComment mutation.
-	CommitOID *GitObjectID "json:\"commitOID\""
+	CommitOID *GitObjectID "json:\"commitOID,omitempty\""
 	// The text of the comment. This field is required
 	//
 	// **Upcoming Change on 2023-10-01 UTC**
 	// **Description:** `body` will be removed. use addPullRequestReviewThread or addPullRequestReviewThreadReply instead
 	// **Reason:** We are deprecating the addPullRequestReviewComment mutation.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// The relative path of the file to comment on.
 	//
 	// **Upcoming Change on 2023-10-01 UTC**
 	// **Description:** `path` will be removed. use addPullRequestReviewThread or addPullRequestReviewThreadReply instead
 	// **Reason:** We are deprecating the addPullRequestReviewComment mutation.
-	Path *string "json:\"path\""
+	Path *string "json:\"path,omitempty\""
 	// The line index in the diff to comment on.
 	//
 	// **Upcoming Change on 2023-10-01 UTC**
 	// **Description:** `position` will be removed. use addPullRequestReviewThread or addPullRequestReviewThreadReply instead
 	// **Reason:** We are deprecating the addPullRequestReviewComment mutation.
-	Position *int "json:\"position\""
+	Position *int "json:\"position,omitempty\""
 	// The comment id to reply to.
 	//
 	// **Upcoming Change on 2023-10-01 UTC**
 	// **Description:** `inReplyTo` will be removed. use addPullRequestReviewThread or addPullRequestReviewThreadReply instead
 	// **Reason:** We are deprecating the addPullRequestReviewComment mutation.
-	InReplyTo *ID "json:\"inReplyTo\""
+	InReplyTo *ID "json:\"inReplyTo,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddPullRequestReviewCommentInput implements the Input interface.
@@ -299,21 +299,21 @@ type AddPullRequestReviewInput struct {
 	// The Node ID of the pull request to modify.
 	PullRequestID ID "json:\"pullRequestId\""
 	// The commit OID the review pertains to.
-	CommitOID *GitObjectID "json:\"commitOID\""
+	CommitOID *GitObjectID "json:\"commitOID,omitempty\""
 	// The contents of the review body comment.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// The event to perform on the pull request review.
-	Event *PullRequestReviewEvent "json:\"event\""
+	Event *PullRequestReviewEvent "json:\"event,omitempty\""
 	// The review line comments.
 	//
 	// **Upcoming Change on 2023-10-01 UTC**
 	// **Description:** `comments` will be removed. use the `threads` argument instead
 	// **Reason:** We are deprecating comment fields that use diff-relative positioning.
-	Comments *[]*DraftPullRequestReviewComment "json:\"comments\""
+	Comments *[]*DraftPullRequestReviewComment "json:\"comments,omitempty\""
 	// The review line comment threads.
-	Threads *[]*DraftPullRequestReviewThread "json:\"threads\""
+	Threads *[]*DraftPullRequestReviewThread "json:\"threads,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddPullRequestReviewInput implements the Input interface.
@@ -329,21 +329,21 @@ type AddPullRequestReviewThreadInput struct {
 	// Body of the thread's first comment.
 	Body string "json:\"body\""
 	// The node ID of the pull request reviewing.
-	PullRequestID *ID "json:\"pullRequestId\""
+	PullRequestID *ID "json:\"pullRequestId,omitempty\""
 	// The Node ID of the review to modify.
-	PullRequestReviewID *ID "json:\"pullRequestReviewId\""
+	PullRequestReviewID *ID "json:\"pullRequestReviewId,omitempty\""
 	// The line of the blob to which the thread refers, required for line-level threads. The end of the line range for multi-line comments.
-	Line *int "json:\"line\""
+	Line *int "json:\"line,omitempty\""
 	// The side of the diff on which the line resides. For multi-line comments, this is the side for the end of the line range.
-	Side *DiffSide "json:\"side\""
+	Side *DiffSide "json:\"side,omitempty\""
 	// The first line of the range to which the comment refers.
-	StartLine *int "json:\"startLine\""
+	StartLine *int "json:\"startLine,omitempty\""
 	// The side of the diff on which the start line resides.
-	StartSide *DiffSide "json:\"startSide\""
+	StartSide *DiffSide "json:\"startSide,omitempty\""
 	// The level at which the comments in the corresponding thread are targeted, can be a diff line or a file.
-	SubjectType *PullRequestReviewThreadSubjectType "json:\"subjectType\""
+	SubjectType *PullRequestReviewThreadSubjectType "json:\"subjectType,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddPullRequestReviewThreadInput implements the Input interface.
@@ -359,7 +359,7 @@ type AddReactionInput struct {
 	// The name of the emoji to react with.
 	Content ReactionContent "json:\"content\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddReactionInput implements the Input interface.
@@ -373,7 +373,7 @@ type AddStarInput struct {
 	// The Starrable ID to star.
 	StarrableID ID "json:\"starrableId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddStarInput implements the Input interface.
@@ -387,7 +387,7 @@ type AddUpvoteInput struct {
 	// The Node ID of the discussion or comment to upvote.
 	SubjectID ID "json:\"subjectId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddUpvoteInput implements the Input interface.
@@ -403,7 +403,7 @@ type AddVerifiableDomainInput struct {
 	// The URL of the domain.
 	Domain URI "json:\"domain\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that AddVerifiableDomainInput implements the Input interface.
@@ -419,9 +419,9 @@ type ApproveDeploymentsInput struct {
 	// The ids of environments to reject deployments.
 	EnvironmentIDs []ID "json:\"environmentIds\""
 	// Optional comment for approving deployments.
-	Comment *string "json:\"comment\""
+	Comment *string "json:\"comment,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that ApproveDeploymentsInput implements the Input interface.
@@ -435,7 +435,7 @@ type ApproveVerifiableDomainInput struct {
 	// The ID of the verifiable domain to approve.
 	ID ID "json:\"id\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that ApproveVerifiableDomainInput implements the Input interface.
@@ -451,7 +451,7 @@ type ArchiveProjectV2ItemInput struct {
 	// The ID of the ProjectV2Item to archive.
 	ItemID ID "json:\"itemId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that ArchiveProjectV2ItemInput implements the Input interface.
@@ -465,7 +465,7 @@ type ArchiveRepositoryInput struct {
 	// The ID of the repository to mark as archived.
 	RepositoryID ID "json:\"repositoryId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that ArchiveRepositoryInput implements the Input interface.
@@ -477,9 +477,9 @@ func (ArchiveRepositoryInput) isInput() {}
 // AuditLogOrder represents ordering options for Audit Log connections.
 type AuditLogOrder struct {
 	// The field to order Audit Logs by.
-	Field *AuditLogOrderField "json:\"field\""
+	Field *AuditLogOrderField "json:\"field,omitempty\""
 	// The ordering direction.
-	Direction *OrderDirection "json:\"direction\""
+	Direction *OrderDirection "json:\"direction,omitempty\""
 }
 
 // Compile-time assertion that AuditLogOrder implements the Input interface.
@@ -499,9 +499,9 @@ const (
 // BranchNamePatternParametersInput represents parameters to be used for the branch_name_pattern rule.
 type BranchNamePatternParametersInput struct {
 	// How this rule will appear to users.
-	Name *string "json:\"name\""
+	Name *string "json:\"name,omitempty\""
 	// If true, the rule will fail if the pattern matches.
-	Negate *bool "json:\"negate\""
+	Negate *bool "json:\"negate,omitempty\""
 	// The operator to use for matching.
 	Operator string "json:\"operator\""
 	// The pattern to match with.
@@ -517,9 +517,9 @@ func (BranchNamePatternParametersInput) isInput() {}
 // BulkSponsorship represents information about a sponsorship to make for a user or organization with a GitHub Sponsors profile, as part of sponsoring many users or organizations at once.
 type BulkSponsorship struct {
 	// The ID of the user or organization who is receiving the sponsorship. Required if sponsorableLogin is not given.
-	SponsorableID *ID "json:\"sponsorableId\""
+	SponsorableID *ID "json:\"sponsorableId,omitempty\""
 	// The username of the user or organization who is receiving the sponsorship. Required if sponsorableId is not given.
-	SponsorableLogin *string "json:\"sponsorableLogin\""
+	SponsorableLogin *string "json:\"sponsorableLogin,omitempty\""
 	// The amount to pay to the sponsorable in US dollars. Valid values: 1-12000.
 	Amount int "json:\"amount\""
 }
@@ -535,7 +535,7 @@ type CancelEnterpriseAdminInvitationInput struct {
 	// The Node ID of the pending enterprise administrator invitation.
 	InvitationID ID "json:\"invitationId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CancelEnterpriseAdminInvitationInput implements the Input interface.
@@ -547,15 +547,15 @@ func (CancelEnterpriseAdminInvitationInput) isInput() {}
 // CancelSponsorshipInput is an autogenerated input type of CancelSponsorship.
 type CancelSponsorshipInput struct {
 	// The ID of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorLogin is not given.
-	SponsorID *ID "json:\"sponsorId\""
+	SponsorID *ID "json:\"sponsorId,omitempty\""
 	// The username of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorId is not given.
-	SponsorLogin *string "json:\"sponsorLogin\""
+	SponsorLogin *string "json:\"sponsorLogin,omitempty\""
 	// The ID of the user or organization who is receiving the sponsorship. Required if sponsorableLogin is not given.
-	SponsorableID *ID "json:\"sponsorableId\""
+	SponsorableID *ID "json:\"sponsorableId,omitempty\""
 	// The username of the user or organization who is receiving the sponsorship. Required if sponsorableId is not given.
-	SponsorableLogin *string "json:\"sponsorableLogin\""
+	SponsorableLogin *string "json:\"sponsorableLogin,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CancelSponsorshipInput implements the Input interface.
@@ -567,17 +567,17 @@ func (CancelSponsorshipInput) isInput() {}
 // ChangeUserStatusInput is an autogenerated input type of ChangeUserStatus.
 type ChangeUserStatusInput struct {
 	// The emoji to represent your status. Can either be a native Unicode emoji or an emoji name with colons, e.g., :grinning:.
-	Emoji *string "json:\"emoji\""
+	Emoji *string "json:\"emoji,omitempty\""
 	// A short description of your current status.
-	Message *string "json:\"message\""
+	Message *string "json:\"message,omitempty\""
 	// The ID of the organization whose members will be allowed to see the status. If omitted, the status will be publicly visible.
-	OrganizationID *ID "json:\"organizationId\""
+	OrganizationID *ID "json:\"organizationId,omitempty\""
 	// Whether this status should indicate you are not fully available on GitHub, e.g., you are away.
-	LimitedAvailability *bool "json:\"limitedAvailability\""
+	LimitedAvailability *bool "json:\"limitedAvailability,omitempty\""
 	// If set, the user status will not be shown after this date.
-	ExpiresAt *DateTime "json:\"expiresAt\""
+	ExpiresAt *DateTime "json:\"expiresAt,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that ChangeUserStatusInput implements the Input interface.
@@ -597,9 +597,9 @@ type CheckAnnotationData struct {
 	// A short description of the feedback for these lines of code.
 	Message string "json:\"message\""
 	// The title that represents the annotation.
-	Title *string "json:\"title\""
+	Title *string "json:\"title,omitempty\""
 	// Details about this annotation.
-	RawDetails *string "json:\"rawDetails\""
+	RawDetails *string "json:\"rawDetails,omitempty\""
 }
 
 // Compile-time assertion that CheckAnnotationData implements the Input interface.
@@ -625,11 +625,11 @@ type CheckAnnotationRange struct {
 	// The starting line of the range.
 	StartLine int "json:\"startLine\""
 	// The starting column of the range.
-	StartColumn *int "json:\"startColumn\""
+	StartColumn *int "json:\"startColumn,omitempty\""
 	// The ending line of the range.
 	EndLine int "json:\"endLine\""
 	// The ending column of the range.
-	EndColumn *int "json:\"endColumn\""
+	EndColumn *int "json:\"endColumn,omitempty\""
 }
 
 // Compile-time assertion that CheckAnnotationRange implements the Input interface.
@@ -681,17 +681,17 @@ func (CheckRunAction) isInput() {}
 // CheckRunFilter represents the filters that are available when fetching check runs.
 type CheckRunFilter struct {
 	// Filters the check runs by this type.
-	CheckType *CheckRunType "json:\"checkType\""
+	CheckType *CheckRunType "json:\"checkType,omitempty\""
 	// Filters the check runs created by this application ID.
-	AppID *int "json:\"appId\""
+	AppID *int "json:\"appId,omitempty\""
 	// Filters the check runs by this name.
-	CheckName *string "json:\"checkName\""
+	CheckName *string "json:\"checkName,omitempty\""
 	// Filters the check runs by this status. Superceded by statuses.
-	Status *CheckStatusState "json:\"status\""
+	Status *CheckStatusState "json:\"status,omitempty\""
 	// Filters the check runs by this status. Overrides status.
-	Statuses *[]CheckStatusState "json:\"statuses\""
+	Statuses *[]CheckStatusState "json:\"statuses,omitempty\""
 	// Filters the check runs by these conclusions.
-	Conclusions *[]CheckConclusionState "json:\"conclusions\""
+	Conclusions *[]CheckConclusionState "json:\"conclusions,omitempty\""
 }
 
 // Compile-time assertion that CheckRunFilter implements the Input interface.
@@ -707,11 +707,11 @@ type CheckRunOutput struct {
 	// The summary of the check run (supports Commonmark).
 	Summary string "json:\"summary\""
 	// The details of the check run (supports Commonmark).
-	Text *string "json:\"text\""
+	Text *string "json:\"text,omitempty\""
 	// The annotations that are made as part of the check run.
-	Annotations *[]CheckAnnotationData "json:\"annotations\""
+	Annotations *[]CheckAnnotationData "json:\"annotations,omitempty\""
 	// Images attached to the check run output displayed in the GitHub pull request UI.
-	Images *[]CheckRunOutputImage "json:\"images\""
+	Images *[]CheckRunOutputImage "json:\"images,omitempty\""
 }
 
 // Compile-time assertion that CheckRunOutput implements the Input interface.
@@ -727,7 +727,7 @@ type CheckRunOutputImage struct {
 	// The full URL of the image.
 	ImageURL URI "json:\"imageUrl\""
 	// A short image description.
-	Caption *string "json:\"caption\""
+	Caption *string "json:\"caption,omitempty\""
 }
 
 // Compile-time assertion that CheckRunOutputImage implements the Input interface.
@@ -815,9 +815,9 @@ func (CheckSuiteAutoTriggerPreference) isInput() {}
 // CheckSuiteFilter represents the filters that are available when fetching check suites.
 type CheckSuiteFilter struct {
 	// Filters the check suites created by this application ID.
-	AppID *int "json:\"appId\""
+	AppID *int "json:\"appId,omitempty\""
 	// Filters the check suites by this name.
-	CheckName *string "json:\"checkName\""
+	CheckName *string "json:\"checkName,omitempty\""
 }
 
 // Compile-time assertion that CheckSuiteFilter implements the Input interface.
@@ -831,7 +831,7 @@ type ClearLabelsFromLabelableInput struct {
 	// The id of the labelable object to clear the labels from.
 	LabelableID ID "json:\"labelableId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that ClearLabelsFromLabelableInput implements the Input interface.
@@ -849,7 +849,7 @@ type ClearProjectV2ItemFieldValueInput struct {
 	// The ID of the field to be cleared.
 	FieldID ID "json:\"fieldId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that ClearProjectV2ItemFieldValueInput implements the Input interface.
@@ -869,11 +869,11 @@ type CloneProjectInput struct {
 	// The name of the project.
 	Name string "json:\"name\""
 	// The description of the project.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// The visibility of the project, defaults to false (private).
-	Public *bool "json:\"public\""
+	Public *bool "json:\"public,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CloneProjectInput implements the Input interface.
@@ -891,13 +891,13 @@ type CloneTemplateRepositoryInput struct {
 	// The ID of the owner for the new repository.
 	OwnerID ID "json:\"ownerId\""
 	// A short description of the new repository.
-	Description *string "json:\"description\""
+	Description *string "json:\"description,omitempty\""
 	// Indicates the repository's visibility level.
 	Visibility RepositoryVisibility "json:\"visibility\""
 	// Whether to copy all branches from the template to the new repository. Defaults to copying only the default branch of the template.
-	IncludeAllBranches *bool "json:\"includeAllBranches\""
+	IncludeAllBranches *bool "json:\"includeAllBranches,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CloneTemplateRepositoryInput implements the Input interface.
@@ -911,9 +911,9 @@ type CloseDiscussionInput struct {
 	// ID of the discussion to be closed.
 	DiscussionID ID "json:\"discussionId\""
 	// The reason why the discussion is being closed.
-	Reason *DiscussionCloseReason "json:\"reason\""
+	Reason *DiscussionCloseReason "json:\"reason,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CloseDiscussionInput implements the Input interface.
@@ -927,9 +927,9 @@ type CloseIssueInput struct {
 	// ID of the issue to be closed.
 	IssueID ID "json:\"issueId\""
 	// The reason the issue is to be closed.
-	StateReason *IssueClosedStateReason "json:\"stateReason\""
+	StateReason *IssueClosedStateReason "json:\"stateReason,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CloseIssueInput implements the Input interface.
@@ -943,7 +943,7 @@ type ClosePullRequestInput struct {
 	// ID of the pull request to be closed.
 	PullRequestID ID "json:\"pullRequestId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that ClosePullRequestInput implements the Input interface.
@@ -1009,9 +1009,9 @@ const (
 // CommitAuthor represents specifies an author for filtering Git commits.
 type CommitAuthor struct {
 	// ID of a User to filter by. If non-null, only commits authored by this user will be returned. This field takes precedence over emails.
-	ID *ID "json:\"id\""
+	ID *ID "json:\"id,omitempty\""
 	// Email addresses to filter by. Commits authored by any of the specified email addresses will be returned.
-	Emails *[]string "json:\"emails\""
+	Emails *[]string "json:\"emails,omitempty\""
 }
 
 // Compile-time assertion that CommitAuthor implements the Input interface.
@@ -1023,9 +1023,9 @@ func (CommitAuthor) isInput() {}
 // CommitAuthorEmailPatternParametersInput represents parameters to be used for the commit_author_email_pattern rule.
 type CommitAuthorEmailPatternParametersInput struct {
 	// How this rule will appear to users.
-	Name *string "json:\"name\""
+	Name *string "json:\"name,omitempty\""
 	// If true, the rule will fail if the pattern matches.
-	Negate *bool "json:\"negate\""
+	Negate *bool "json:\"negate,omitempty\""
 	// The operator to use for matching.
 	Operator string "json:\"operator\""
 	// The pattern to match with.
@@ -1067,7 +1067,7 @@ type CommitMessage struct {
 	// The headline of the message.
 	Headline string "json:\"headline\""
 	// The body of the message.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 }
 
 // Compile-time assertion that CommitMessage implements the Input interface.
@@ -1079,9 +1079,9 @@ func (CommitMessage) isInput() {}
 // CommitMessagePatternParametersInput represents parameters to be used for the commit_message_pattern rule.
 type CommitMessagePatternParametersInput struct {
 	// How this rule will appear to users.
-	Name *string "json:\"name\""
+	Name *string "json:\"name,omitempty\""
 	// If true, the rule will fail if the pattern matches.
-	Negate *bool "json:\"negate\""
+	Negate *bool "json:\"negate,omitempty\""
 	// The operator to use for matching.
 	Operator string "json:\"operator\""
 	// The pattern to match with.
@@ -1117,11 +1117,11 @@ func (CommitMessagePatternParametersInput) isInput() {}
 //	}.
 type CommittableBranch struct {
 	// The Node ID of the Ref to be updated.
-	ID *ID "json:\"id\""
+	ID *ID "json:\"id,omitempty\""
 	// The nameWithOwner of the repository to commit to.
-	RepositoryNameWithOwner *string "json:\"repositoryNameWithOwner\""
+	RepositoryNameWithOwner *string "json:\"repositoryNameWithOwner,omitempty\""
 	// The unqualified name of the branch to append the commit to.
-	BranchName *string "json:\"branchName\""
+	BranchName *string "json:\"branchName,omitempty\""
 }
 
 // Compile-time assertion that CommittableBranch implements the Input interface.
@@ -1133,9 +1133,9 @@ func (CommittableBranch) isInput() {}
 // CommitterEmailPatternParametersInput represents parameters to be used for the committer_email_pattern rule.
 type CommitterEmailPatternParametersInput struct {
 	// How this rule will appear to users.
-	Name *string "json:\"name\""
+	Name *string "json:\"name,omitempty\""
 	// If true, the rule will fail if the pattern matches.
-	Negate *bool "json:\"negate\""
+	Negate *bool "json:\"negate,omitempty\""
 	// The operator to use for matching.
 	Operator string "json:\"operator\""
 	// The pattern to match with.
@@ -1197,11 +1197,11 @@ type ConvertProjectCardNoteToIssueInput struct {
 	// The ID of the repository to create the issue in.
 	RepositoryID ID "json:\"repositoryId\""
 	// The title of the newly created issue. Defaults to the card's note text.
-	Title *string "json:\"title\""
+	Title *string "json:\"title,omitempty\""
 	// The body of the newly created issue.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that ConvertProjectCardNoteToIssueInput implements the Input interface.
@@ -1215,7 +1215,7 @@ type ConvertPullRequestToDraftInput struct {
 	// ID of the pull request to convert to draft.
 	PullRequestID ID "json:\"pullRequestId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that ConvertPullRequestToDraftInput implements the Input interface.
@@ -1233,9 +1233,9 @@ type CopyProjectV2Input struct {
 	// The title of the project.
 	Title string "json:\"title\""
 	// Include draft issues in the new project.
-	IncludeDraftIssues *bool "json:\"includeDraftIssues\""
+	IncludeDraftIssues *bool "json:\"includeDraftIssues,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CopyProjectV2Input implements the Input interface.
@@ -1253,7 +1253,7 @@ type CreateAttributionInvitationInput struct {
 	// The Node ID of the account which may claim the data.
 	TargetID ID "json:\"targetId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateAttributionInvitationInput implements the Input interface.
@@ -1269,59 +1269,59 @@ type CreateBranchProtectionRuleInput struct {
 	// The glob-like pattern used to determine matching branches.
 	Pattern string "json:\"pattern\""
 	// Are approving reviews required to update matching branches.
-	RequiresApprovingReviews *bool "json:\"requiresApprovingReviews\""
+	RequiresApprovingReviews *bool "json:\"requiresApprovingReviews,omitempty\""
 	// Number of approving reviews required to update matching branches.
-	RequiredApprovingReviewCount *int "json:\"requiredApprovingReviewCount\""
+	RequiredApprovingReviewCount *int "json:\"requiredApprovingReviewCount,omitempty\""
 	// Are commits required to be signed.
-	RequiresCommitSignatures *bool "json:\"requiresCommitSignatures\""
+	RequiresCommitSignatures *bool "json:\"requiresCommitSignatures,omitempty\""
 	// Are merge commits prohibited from being pushed to this branch.
-	RequiresLinearHistory *bool "json:\"requiresLinearHistory\""
+	RequiresLinearHistory *bool "json:\"requiresLinearHistory,omitempty\""
 	// Is branch creation a protected operation.
-	BlocksCreations *bool "json:\"blocksCreations\""
+	BlocksCreations *bool "json:\"blocksCreations,omitempty\""
 	// Are force pushes allowed on this branch.
-	AllowsForcePushes *bool "json:\"allowsForcePushes\""
+	AllowsForcePushes *bool "json:\"allowsForcePushes,omitempty\""
 	// Can this branch be deleted.
-	AllowsDeletions *bool "json:\"allowsDeletions\""
+	AllowsDeletions *bool "json:\"allowsDeletions,omitempty\""
 	// Can admins overwrite branch protection.
-	IsAdminEnforced *bool "json:\"isAdminEnforced\""
+	IsAdminEnforced *bool "json:\"isAdminEnforced,omitempty\""
 	// Are status checks required to update matching branches.
-	RequiresStatusChecks *bool "json:\"requiresStatusChecks\""
+	RequiresStatusChecks *bool "json:\"requiresStatusChecks,omitempty\""
 	// Are branches required to be up to date before merging.
-	RequiresStrictStatusChecks *bool "json:\"requiresStrictStatusChecks\""
+	RequiresStrictStatusChecks *bool "json:\"requiresStrictStatusChecks,omitempty\""
 	// Are reviews from code owners required to update matching branches.
-	RequiresCodeOwnerReviews *bool "json:\"requiresCodeOwnerReviews\""
+	RequiresCodeOwnerReviews *bool "json:\"requiresCodeOwnerReviews,omitempty\""
 	// Will new commits pushed to matching branches dismiss pull request review approvals.
-	DismissesStaleReviews *bool "json:\"dismissesStaleReviews\""
+	DismissesStaleReviews *bool "json:\"dismissesStaleReviews,omitempty\""
 	// Is dismissal of pull request reviews restricted.
-	RestrictsReviewDismissals *bool "json:\"restrictsReviewDismissals\""
+	RestrictsReviewDismissals *bool "json:\"restrictsReviewDismissals,omitempty\""
 	// A list of User, Team, or App IDs allowed to dismiss reviews on pull requests targeting matching branches.
-	ReviewDismissalActorIDs *[]ID "json:\"reviewDismissalActorIds\""
+	ReviewDismissalActorIDs *[]ID "json:\"reviewDismissalActorIds,omitempty\""
 	// A list of User, Team, or App IDs allowed to bypass pull requests targeting matching branches.
-	BypassPullRequestActorIDs *[]ID "json:\"bypassPullRequestActorIds\""
+	BypassPullRequestActorIDs *[]ID "json:\"bypassPullRequestActorIds,omitempty\""
 	// A list of User, Team, or App IDs allowed to bypass force push targeting matching branches.
-	BypassForcePushActorIDs *[]ID "json:\"bypassForcePushActorIds\""
+	BypassForcePushActorIDs *[]ID "json:\"bypassForcePushActorIds,omitempty\""
 	// Is pushing to matching branches restricted.
-	RestrictsPushes *bool "json:\"restrictsPushes\""
+	RestrictsPushes *bool "json:\"restrictsPushes,omitempty\""
 	// A list of User, Team, or App IDs allowed to push to matching branches.
-	PushActorIDs *[]ID "json:\"pushActorIds\""
+	PushActorIDs *[]ID "json:\"pushActorIds,omitempty\""
 	// List of required status check contexts that must pass for commits to be accepted to matching branches.
-	RequiredStatusCheckContexts *[]string "json:\"requiredStatusCheckContexts\""
+	RequiredStatusCheckContexts *[]string "json:\"requiredStatusCheckContexts,omitempty\""
 	// The list of required status checks.
-	RequiredStatusChecks *[]RequiredStatusCheckInput "json:\"requiredStatusChecks\""
+	RequiredStatusChecks *[]RequiredStatusCheckInput "json:\"requiredStatusChecks,omitempty\""
 	// Are successful deployments required before merging.
-	RequiresDeployments *bool "json:\"requiresDeployments\""
+	RequiresDeployments *bool "json:\"requiresDeployments,omitempty\""
 	// The list of required deployment environments.
-	RequiredDeploymentEnvironments *[]string "json:\"requiredDeploymentEnvironments\""
+	RequiredDeploymentEnvironments *[]string "json:\"requiredDeploymentEnvironments,omitempty\""
 	// Are conversations required to be resolved before merging.
-	RequiresConversationResolution *bool "json:\"requiresConversationResolution\""
+	RequiresConversationResolution *bool "json:\"requiresConversationResolution,omitempty\""
 	// Whether the most recent push must be approved by someone other than the person who pushed it.
-	RequireLastPushApproval *bool "json:\"requireLastPushApproval\""
+	RequireLastPushApproval *bool "json:\"requireLastPushApproval,omitempty\""
 	// Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.
-	LockBranch *bool "json:\"lockBranch\""
+	LockBranch *bool "json:\"lockBranch,omitempty\""
 	// Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-	LockAllowsFetchAndMerge *bool "json:\"lockAllowsFetchAndMerge\""
+	LockAllowsFetchAndMerge *bool "json:\"lockAllowsFetchAndMerge,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateBranchProtectionRuleInput implements the Input interface.
@@ -1339,23 +1339,23 @@ type CreateCheckRunInput struct {
 	// The SHA of the head commit.
 	HeadSha GitObjectID "json:\"headSha\""
 	// The URL of the integrator's site that has the full details of the check.
-	DetailsURL *URI "json:\"detailsUrl\""
+	DetailsURL *URI "json:\"detailsUrl,omitempty\""
 	// A reference for the run on the integrator's system.
-	ExternalID *string "json:\"externalId\""
+	ExternalID *string "json:\"externalId,omitempty\""
 	// The current status.
-	Status *RequestableCheckStatusState "json:\"status\""
+	Status *RequestableCheckStatusState "json:\"status,omitempty\""
 	// The time that the check run began.
-	StartedAt *DateTime "json:\"startedAt\""
+	StartedAt *DateTime "json:\"startedAt,omitempty\""
 	// The final conclusion of the check.
-	Conclusion *CheckConclusionState "json:\"conclusion\""
+	Conclusion *CheckConclusionState "json:\"conclusion,omitempty\""
 	// The time that the check run finished.
-	CompletedAt *DateTime "json:\"completedAt\""
+	CompletedAt *DateTime "json:\"completedAt,omitempty\""
 	// Descriptive details about the run.
-	Output *CheckRunOutput "json:\"output\""
+	Output *CheckRunOutput "json:\"output,omitempty\""
 	// Possible further actions the integrator can perform, which a user may trigger.
-	Actions *[]CheckRunAction "json:\"actions\""
+	Actions *[]CheckRunAction "json:\"actions,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateCheckRunInput implements the Input interface.
@@ -1371,7 +1371,7 @@ type CreateCheckSuiteInput struct {
 	// The SHA of the head commit.
 	HeadSha GitObjectID "json:\"headSha\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateCheckSuiteInput implements the Input interface.
@@ -1385,13 +1385,13 @@ type CreateCommitOnBranchInput struct {
 	// The Ref to be updated.  Must be a branch.
 	Branch CommittableBranch "json:\"branch\""
 	// A description of changes to files in this commit.
-	FileChanges *FileChanges "json:\"fileChanges\""
+	FileChanges *FileChanges "json:\"fileChanges,omitempty\""
 	// The commit message the be included with the commit.
 	Message CommitMessage "json:\"message\""
 	// The git commit oid expected at the head of the branch prior to the commit.
 	ExpectedHeadOid GitObjectID "json:\"expectedHeadOid\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateCommitOnBranchInput implements the Input interface.
@@ -1411,7 +1411,7 @@ type CreateDiscussionInput struct {
 	// The id of the discussion category to associate with this discussion.
 	CategoryID ID "json:\"categoryId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateDiscussionInput implements the Input interface.
@@ -1433,7 +1433,7 @@ type CreateEnterpriseOrganizationInput struct {
 	// The logins for the administrators of the new organization.
 	AdminLogins []string "json:\"adminLogins\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateEnterpriseOrganizationInput implements the Input interface.
@@ -1449,7 +1449,7 @@ type CreateEnvironmentInput struct {
 	// The name of the environment.
 	Name string "json:\"name\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateEnvironmentInput implements the Input interface.
@@ -1465,11 +1465,11 @@ type CreateIPAllowListEntryInput struct {
 	// An IP address or range of addresses in CIDR notation.
 	AllowListValue string "json:\"allowListValue\""
 	// An optional name for the IP allow list entry.
-	Name *string "json:\"name\""
+	Name *string "json:\"name,omitempty\""
 	// Whether the IP allow list entry is active when an IP allow list is enabled.
 	IsActive bool "json:\"isActive\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateIPAllowListEntryInput implements the Input interface.
@@ -1485,19 +1485,19 @@ type CreateIssueInput struct {
 	// The title for the issue.
 	Title string "json:\"title\""
 	// The body for the issue description.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// The Node ID for the user assignee for this issue.
-	AssigneeIDs *[]ID "json:\"assigneeIds\""
+	AssigneeIDs *[]ID "json:\"assigneeIds,omitempty\""
 	// The Node ID of the milestone for this issue.
-	MilestoneID *ID "json:\"milestoneId\""
+	MilestoneID *ID "json:\"milestoneId,omitempty\""
 	// An array of Node IDs of labels for this issue.
-	LabelIDs *[]ID "json:\"labelIds\""
+	LabelIDs *[]ID "json:\"labelIds,omitempty\""
 	// An array of Node IDs for projects associated with this issue.
-	ProjectIDs *[]ID "json:\"projectIds\""
+	ProjectIDs *[]ID "json:\"projectIds,omitempty\""
 	// The name of an issue template in the repository, assigns labels and assignees from the template to the issue.
-	IssueTemplate *string "json:\"issueTemplate\""
+	IssueTemplate *string "json:\"issueTemplate,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateIssueInput implements the Input interface.
@@ -1513,11 +1513,11 @@ type CreateLinkedBranchInput struct {
 	// The commit SHA to base the new branch on.
 	Oid GitObjectID "json:\"oid\""
 	// The name of the new branch. Defaults to issue number and title.
-	Name *string "json:\"name\""
+	Name *string "json:\"name,omitempty\""
 	// ID of the repository to create the branch in. Defaults to the issue repository.
-	RepositoryID *ID "json:\"repositoryId\""
+	RepositoryID *ID "json:\"repositoryId,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateLinkedBranchInput implements the Input interface.
@@ -1531,17 +1531,17 @@ type CreateMigrationSourceInput struct {
 	// The migration source name.
 	Name string "json:\"name\""
 	// The migration source URL, for example `https://github.com` or `https://monalisa.ghe.com`.
-	URL *string "json:\"url\""
+	URL *string "json:\"url,omitempty\""
 	// The migration source access token.
-	AccessToken *string "json:\"accessToken\""
+	AccessToken *string "json:\"accessToken,omitempty\""
 	// The migration source type.
 	Type MigrationSourceType "json:\"type\""
 	// The ID of the organization that will own the migration source.
 	OwnerID ID "json:\"ownerId\""
 	// The GitHub personal access token of the user importing to the target repository.
-	GitHubPat *string "json:\"githubPat\""
+	GitHubPat *string "json:\"githubPat,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateMigrationSourceInput implements the Input interface.
@@ -1557,13 +1557,13 @@ type CreateProjectInput struct {
 	// The name of project.
 	Name string "json:\"name\""
 	// The description of project.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// The name of the GitHub-provided template.
-	Template *ProjectTemplate "json:\"template\""
+	Template *ProjectTemplate "json:\"template,omitempty\""
 	// A list of repository IDs to create as linked repositories for the project.
-	RepositoryIDs *[]ID "json:\"repositoryIds\""
+	RepositoryIDs *[]ID "json:\"repositoryIds,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateProjectInput implements the Input interface.
@@ -1581,9 +1581,9 @@ type CreateProjectV2FieldInput struct {
 	// The name of the field.
 	Name string "json:\"name\""
 	// Options for a single select field. At least one value is required if data_type is SINGLE_SELECT.
-	SingleSelectOptions *[]ProjectV2SingleSelectFieldOptionInput "json:\"singleSelectOptions\""
+	SingleSelectOptions *[]ProjectV2SingleSelectFieldOptionInput "json:\"singleSelectOptions,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateProjectV2FieldInput implements the Input interface.
@@ -1599,11 +1599,11 @@ type CreateProjectV2Input struct {
 	// The title of the project.
 	Title string "json:\"title\""
 	// The repository to link the project to.
-	RepositoryID *ID "json:\"repositoryId\""
+	RepositoryID *ID "json:\"repositoryId,omitempty\""
 	// The team to link the project to. The team will be granted read permissions.
-	TeamID *ID "json:\"teamId\""
+	TeamID *ID "json:\"teamId,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateProjectV2Input implements the Input interface.
@@ -1624,17 +1624,17 @@ type CreatePullRequestInput struct {
 	// in the same network, namespace `head_ref_name` with a user like this: `username:branch`.
 	HeadRefName string "json:\"headRefName\""
 	// The Node ID of the head repository.
-	HeadRepositoryID *ID "json:\"headRepositoryId\""
+	HeadRepositoryID *ID "json:\"headRepositoryId,omitempty\""
 	// The title of the pull request.
 	Title string "json:\"title\""
 	// The contents of the pull request.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// Indicates whether maintainers can modify the pull request.
-	MaintainerCanModify *bool "json:\"maintainerCanModify\""
+	MaintainerCanModify *bool "json:\"maintainerCanModify,omitempty\""
 	// Indicates whether this pull request should be a draft.
-	Draft *bool "json:\"draft\""
+	Draft *bool "json:\"draft,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreatePullRequestInput implements the Input interface.
@@ -1652,7 +1652,7 @@ type CreateRefInput struct {
 	// The GitObjectID that the new Ref shall target. Must point to a commit.
 	Oid GitObjectID "json:\"oid\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateRefInput implements the Input interface.
@@ -1666,23 +1666,23 @@ type CreateRepositoryInput struct {
 	// The name of the new repository.
 	Name string "json:\"name\""
 	// The ID of the owner for the new repository.
-	OwnerID *ID "json:\"ownerId\""
+	OwnerID *ID "json:\"ownerId,omitempty\""
 	// A short description of the new repository.
-	Description *string "json:\"description\""
+	Description *string "json:\"description,omitempty\""
 	// Indicates the repository's visibility level.
 	Visibility RepositoryVisibility "json:\"visibility\""
 	// Whether this repository should be marked as a template such that anyone who can access it can create new repositories with the same files and directory structure.
-	Template *bool "json:\"template\""
+	Template *bool "json:\"template,omitempty\""
 	// The URL for a web page about this repository.
-	HomepageURL *URI "json:\"homepageUrl\""
+	HomepageURL *URI "json:\"homepageUrl,omitempty\""
 	// Indicates if the repository should have the wiki feature enabled.
-	HasWikiEnabled *bool "json:\"hasWikiEnabled\""
+	HasWikiEnabled *bool "json:\"hasWikiEnabled,omitempty\""
 	// Indicates if the repository should have the issues feature enabled.
-	HasIssuesEnabled *bool "json:\"hasIssuesEnabled\""
+	HasIssuesEnabled *bool "json:\"hasIssuesEnabled,omitempty\""
 	// When an organization is specified as the owner, this ID identifies the team that should be granted access to the new repository.
-	TeamID *ID "json:\"teamId\""
+	TeamID *ID "json:\"teamId,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateRepositoryInput implements the Input interface.
@@ -1698,17 +1698,17 @@ type CreateRepositoryRulesetInput struct {
 	// The name of the ruleset.
 	Name string "json:\"name\""
 	// The target of the ruleset.
-	Target *RepositoryRulesetTarget "json:\"target\""
+	Target *RepositoryRulesetTarget "json:\"target,omitempty\""
 	// The list of rules for this ruleset.
-	Rules *[]RepositoryRuleInput "json:\"rules\""
+	Rules *[]RepositoryRuleInput "json:\"rules,omitempty\""
 	// The set of conditions for this ruleset.
 	Conditions RepositoryRuleConditionsInput "json:\"conditions\""
 	// The enforcement level for this ruleset.
 	Enforcement RuleEnforcement "json:\"enforcement\""
 	// A list of actors that are allowed to bypass rules in this ruleset.
-	BypassActors *[]RepositoryRulesetBypassActorInput "json:\"bypassActors\""
+	BypassActors *[]RepositoryRulesetBypassActorInput "json:\"bypassActors,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateRepositoryRulesetInput implements the Input interface.
@@ -1720,21 +1720,21 @@ func (CreateRepositoryRulesetInput) isInput() {}
 // CreateSponsorsListingInput is an autogenerated input type of CreateSponsorsListing.
 type CreateSponsorsListingInput struct {
 	// The username of the organization to create a GitHub Sponsors profile for, if desired. Defaults to creating a GitHub Sponsors profile for the authenticated user if omitted.
-	SponsorableLogin *string "json:\"sponsorableLogin\""
+	SponsorableLogin *string "json:\"sponsorableLogin,omitempty\""
 	// The username of the supported fiscal host's GitHub organization, if you want to receive sponsorship payouts through a fiscal host rather than directly to a bank account. For example, 'Open-Source-Collective' for Open Source Collective or 'numfocus' for numFOCUS. Case insensitive. See https://docs.github.com/sponsors/receiving-sponsorships-through-github-sponsors/using-a-fiscal-host-to-receive-github-sponsors-payouts for more information.
-	FiscalHostLogin *string "json:\"fiscalHostLogin\""
+	FiscalHostLogin *string "json:\"fiscalHostLogin,omitempty\""
 	// The URL for your profile page on the fiscal host's website, e.g., https://opencollective.com/babel or https://numfocus.org/project/bokeh. Required if fiscalHostLogin is specified.
-	FiscallyHostedProjectProfileURL *string "json:\"fiscallyHostedProjectProfileUrl\""
+	FiscallyHostedProjectProfileURL *string "json:\"fiscallyHostedProjectProfileUrl,omitempty\""
 	// The country or region where the sponsorable's bank account is located. Required if fiscalHostLogin is not specified, ignored when fiscalHostLogin is specified.
-	BillingCountryOrRegionCode *SponsorsCountryOrRegionCode "json:\"billingCountryOrRegionCode\""
+	BillingCountryOrRegionCode *SponsorsCountryOrRegionCode "json:\"billingCountryOrRegionCode,omitempty\""
 	// The country or region where the sponsorable resides. This is for tax purposes. Required if the sponsorable is yourself, ignored when sponsorableLogin specifies an organization.
-	ResidenceCountryOrRegionCode *SponsorsCountryOrRegionCode "json:\"residenceCountryOrRegionCode\""
+	ResidenceCountryOrRegionCode *SponsorsCountryOrRegionCode "json:\"residenceCountryOrRegionCode,omitempty\""
 	// The email address we should use to contact you about the GitHub Sponsors profile being created. This will not be shared publicly. Must be a verified email address already on your GitHub account. Only relevant when the sponsorable is yourself. Defaults to your primary email address on file if omitted.
-	ContactEmail *string "json:\"contactEmail\""
+	ContactEmail *string "json:\"contactEmail,omitempty\""
 	// Provide an introduction to serve as the main focus that appears on your GitHub Sponsors profile. It's a great opportunity to help potential sponsors learn more about you, your work, and why their sponsorship is important to you. GitHub-flavored Markdown is supported.
-	FullDescription *string "json:\"fullDescription\""
+	FullDescription *string "json:\"fullDescription,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateSponsorsListingInput implements the Input interface.
@@ -1746,27 +1746,27 @@ func (CreateSponsorsListingInput) isInput() {}
 // CreateSponsorsTierInput is an autogenerated input type of CreateSponsorsTier.
 type CreateSponsorsTierInput struct {
 	// The ID of the user or organization who owns the GitHub Sponsors profile. Defaults to the current user if omitted and sponsorableLogin is not given.
-	SponsorableID *ID "json:\"sponsorableId\""
+	SponsorableID *ID "json:\"sponsorableId,omitempty\""
 	// The username of the user or organization who owns the GitHub Sponsors profile. Defaults to the current user if omitted and sponsorableId is not given.
-	SponsorableLogin *string "json:\"sponsorableLogin\""
+	SponsorableLogin *string "json:\"sponsorableLogin,omitempty\""
 	// The value of the new tier in US dollars. Valid values: 1-12000.
 	Amount int "json:\"amount\""
 	// Whether sponsorships using this tier should happen monthly/yearly or just once.
-	IsRecurring *bool "json:\"isRecurring\""
+	IsRecurring *bool "json:\"isRecurring,omitempty\""
 	// Optional ID of the private repository that sponsors at this tier should gain read-only access to. Must be owned by an organization.
-	RepositoryID *ID "json:\"repositoryId\""
+	RepositoryID *ID "json:\"repositoryId,omitempty\""
 	// Optional login of the organization owner of the private repository that sponsors at this tier should gain read-only access to. Necessary if repositoryName is given. Will be ignored if repositoryId is given.
-	RepositoryOwnerLogin *string "json:\"repositoryOwnerLogin\""
+	RepositoryOwnerLogin *string "json:\"repositoryOwnerLogin,omitempty\""
 	// Optional name of the private repository that sponsors at this tier should gain read-only access to. Must be owned by an organization. Necessary if repositoryOwnerLogin is given. Will be ignored if repositoryId is given.
-	RepositoryName *string "json:\"repositoryName\""
+	RepositoryName *string "json:\"repositoryName,omitempty\""
 	// Optional message new sponsors at this tier will receive.
-	WelcomeMessage *string "json:\"welcomeMessage\""
+	WelcomeMessage *string "json:\"welcomeMessage,omitempty\""
 	// A description of what this tier is, what perks sponsors might receive, what a sponsorship at this tier means for you, etc.
 	Description string "json:\"description\""
 	// Whether to make the tier available immediately for sponsors to choose. Defaults to creating a draft tier that will not be publicly visible.
-	Publish *bool "json:\"publish\""
+	Publish *bool "json:\"publish,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateSponsorsTierInput implements the Input interface.
@@ -1778,25 +1778,25 @@ func (CreateSponsorsTierInput) isInput() {}
 // CreateSponsorshipInput is an autogenerated input type of CreateSponsorship.
 type CreateSponsorshipInput struct {
 	// The ID of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorLogin is not given.
-	SponsorID *ID "json:\"sponsorId\""
+	SponsorID *ID "json:\"sponsorId,omitempty\""
 	// The username of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorId is not given.
-	SponsorLogin *string "json:\"sponsorLogin\""
+	SponsorLogin *string "json:\"sponsorLogin,omitempty\""
 	// The ID of the user or organization who is receiving the sponsorship. Required if sponsorableLogin is not given.
-	SponsorableID *ID "json:\"sponsorableId\""
+	SponsorableID *ID "json:\"sponsorableId,omitempty\""
 	// The username of the user or organization who is receiving the sponsorship. Required if sponsorableId is not given.
-	SponsorableLogin *string "json:\"sponsorableLogin\""
+	SponsorableLogin *string "json:\"sponsorableLogin,omitempty\""
 	// The ID of one of sponsorable's existing tiers to sponsor at. Required if amount is not specified.
-	TierID *ID "json:\"tierId\""
+	TierID *ID "json:\"tierId,omitempty\""
 	// The amount to pay to the sponsorable in US dollars. Required if a tierId is not specified. Valid values: 1-12000.
-	Amount *int "json:\"amount\""
+	Amount *int "json:\"amount,omitempty\""
 	// Whether the sponsorship should happen monthly/yearly or just this one time. Required if a tierId is not specified.
-	IsRecurring *bool "json:\"isRecurring\""
+	IsRecurring *bool "json:\"isRecurring,omitempty\""
 	// Whether the sponsor should receive email updates from the sponsorable.
-	ReceiveEmails *bool "json:\"receiveEmails\""
+	ReceiveEmails *bool "json:\"receiveEmails,omitempty\""
 	// Specify whether others should be able to see that the sponsor is sponsoring the sponsorable. Public visibility still does not reveal which tier is used.
-	PrivacyLevel *SponsorshipPrivacy "json:\"privacyLevel\""
+	PrivacyLevel *SponsorshipPrivacy "json:\"privacyLevel,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateSponsorshipInput implements the Input interface.
@@ -1812,11 +1812,11 @@ type CreateSponsorshipsInput struct {
 	// The list of maintainers to sponsor and for how much apiece.
 	Sponsorships []BulkSponsorship "json:\"sponsorships\""
 	// Whether the sponsor should receive email updates from the sponsorables.
-	ReceiveEmails *bool "json:\"receiveEmails\""
+	ReceiveEmails *bool "json:\"receiveEmails,omitempty\""
 	// Specify whether others should be able to see that the sponsor is sponsoring the sponsorables. Public visibility still does not reveal the dollar value of the sponsorship.
-	PrivacyLevel *SponsorshipPrivacy "json:\"privacyLevel\""
+	PrivacyLevel *SponsorshipPrivacy "json:\"privacyLevel,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateSponsorshipsInput implements the Input interface.
@@ -1832,15 +1832,15 @@ type CreateTeamDiscussionCommentInput struct {
 	// **Upcoming Change on 2024-07-01 UTC**
 	// **Description:** `discussionId` will be removed. Follow the guide at https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to find a suitable replacement.
 	// **Reason:** The Team Discussions feature is deprecated in favor of Organization Discussions.
-	DiscussionID *ID "json:\"discussionId\""
+	DiscussionID *ID "json:\"discussionId,omitempty\""
 	// The content of the comment. This field is required.
 	//
 	// **Upcoming Change on 2024-07-01 UTC**
 	// **Description:** `body` will be removed. Follow the guide at https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to find a suitable replacement.
 	// **Reason:** The Team Discussions feature is deprecated in favor of Organization Discussions.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateTeamDiscussionCommentInput implements the Input interface.
@@ -1856,27 +1856,27 @@ type CreateTeamDiscussionInput struct {
 	// **Upcoming Change on 2024-07-01 UTC**
 	// **Description:** `teamId` will be removed. Follow the guide at https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to find a suitable replacement.
 	// **Reason:** The Team Discussions feature is deprecated in favor of Organization Discussions.
-	TeamID *ID "json:\"teamId\""
+	TeamID *ID "json:\"teamId,omitempty\""
 	// The title of the discussion. This field is required.
 	//
 	// **Upcoming Change on 2024-07-01 UTC**
 	// **Description:** `title` will be removed. Follow the guide at https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to find a suitable replacement.
 	// **Reason:** The Team Discussions feature is deprecated in favor of Organization Discussions.
-	Title *string "json:\"title\""
+	Title *string "json:\"title,omitempty\""
 	// The content of the discussion. This field is required.
 	//
 	// **Upcoming Change on 2024-07-01 UTC**
 	// **Description:** `body` will be removed. Follow the guide at https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to find a suitable replacement.
 	// **Reason:** The Team Discussions feature is deprecated in favor of Organization Discussions.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// If true, restricts the visibility of this discussion to team members and organization admins. If false or not specified, allows any organization member to view this discussion.
 	//
 	// **Upcoming Change on 2024-07-01 UTC**
 	// **Description:** `private` will be removed. Follow the guide at https://github.blog/changelog/2023-02-08-sunset-notice-team-discussions/ to find a suitable replacement.
 	// **Reason:** The Team Discussions feature is deprecated in favor of Organization Discussions.
-	Private *bool "json:\"private\""
+	Private *bool "json:\"private,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that CreateTeamDiscussionInput implements the Input interface.
@@ -1894,7 +1894,7 @@ type DeclineTopicSuggestionInput struct {
 	// The reason why the suggested topic is declined.
 	Reason TopicSuggestionDeclineReason "json:\"reason\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeclineTopicSuggestionInput implements the Input interface.
@@ -1922,7 +1922,7 @@ type DeleteBranchProtectionRuleInput struct {
 	// The global relay id of the branch protection rule to be deleted.
 	BranchProtectionRuleID ID "json:\"branchProtectionRuleId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteBranchProtectionRuleInput implements the Input interface.
@@ -1936,7 +1936,7 @@ type DeleteDeploymentInput struct {
 	// The Node ID of the deployment to be deleted.
 	ID ID "json:\"id\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteDeploymentInput implements the Input interface.
@@ -1950,7 +1950,7 @@ type DeleteDiscussionCommentInput struct {
 	// The Node id of the discussion comment to delete.
 	ID ID "json:\"id\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteDiscussionCommentInput implements the Input interface.
@@ -1964,7 +1964,7 @@ type DeleteDiscussionInput struct {
 	// The id of the discussion to delete.
 	ID ID "json:\"id\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteDiscussionInput implements the Input interface.
@@ -1978,7 +1978,7 @@ type DeleteEnvironmentInput struct {
 	// The Node ID of the environment to be deleted.
 	ID ID "json:\"id\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteEnvironmentInput implements the Input interface.
@@ -1992,7 +1992,7 @@ type DeleteIPAllowListEntryInput struct {
 	// The ID of the IP allow list entry to delete.
 	IPAllowListEntryID ID "json:\"ipAllowListEntryId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteIPAllowListEntryInput implements the Input interface.
@@ -2006,7 +2006,7 @@ type DeleteIssueCommentInput struct {
 	// The ID of the comment to delete.
 	ID ID "json:\"id\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteIssueCommentInput implements the Input interface.
@@ -2020,7 +2020,7 @@ type DeleteIssueInput struct {
 	// The ID of the issue to delete.
 	IssueID ID "json:\"issueId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteIssueInput implements the Input interface.
@@ -2034,7 +2034,7 @@ type DeleteLinkedBranchInput struct {
 	// The ID of the linked branch.
 	LinkedBranchID ID "json:\"linkedBranchId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteLinkedBranchInput implements the Input interface.
@@ -2048,7 +2048,7 @@ type DeleteProjectCardInput struct {
 	// The id of the card to delete.
 	CardID ID "json:\"cardId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteProjectCardInput implements the Input interface.
@@ -2062,7 +2062,7 @@ type DeleteProjectColumnInput struct {
 	// The id of the column to delete.
 	ColumnID ID "json:\"columnId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteProjectColumnInput implements the Input interface.
@@ -2076,7 +2076,7 @@ type DeleteProjectInput struct {
 	// The Project ID to update.
 	ProjectID ID "json:\"projectId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteProjectInput implements the Input interface.
@@ -2090,7 +2090,7 @@ type DeleteProjectV2FieldInput struct {
 	// The ID of the field to delete.
 	FieldID ID "json:\"fieldId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteProjectV2FieldInput implements the Input interface.
@@ -2104,7 +2104,7 @@ type DeleteProjectV2Input struct {
 	// The ID of the Project to delete.
 	ProjectID ID "json:\"projectId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteProjectV2Input implements the Input interface.
@@ -2120,7 +2120,7 @@ type DeleteProjectV2ItemInput struct {
 	// The ID of the item to be removed.
 	ItemID ID "json:\"itemId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteProjectV2ItemInput implements the Input interface.
@@ -2134,7 +2134,7 @@ type DeleteProjectV2WorkflowInput struct {
 	// The ID of the workflow to be removed.
 	WorkflowID ID "json:\"workflowId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteProjectV2WorkflowInput implements the Input interface.
@@ -2148,7 +2148,7 @@ type DeletePullRequestReviewCommentInput struct {
 	// The ID of the comment to delete.
 	ID ID "json:\"id\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeletePullRequestReviewCommentInput implements the Input interface.
@@ -2162,7 +2162,7 @@ type DeletePullRequestReviewInput struct {
 	// The Node ID of the pull request review to delete.
 	PullRequestReviewID ID "json:\"pullRequestReviewId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeletePullRequestReviewInput implements the Input interface.
@@ -2176,7 +2176,7 @@ type DeleteRefInput struct {
 	// The Node ID of the Ref to be deleted.
 	RefID ID "json:\"refId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteRefInput implements the Input interface.
@@ -2190,7 +2190,7 @@ type DeleteRepositoryRulesetInput struct {
 	// The global relay id of the repository ruleset to be deleted.
 	RepositoryRulesetID ID "json:\"repositoryRulesetId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteRepositoryRulesetInput implements the Input interface.
@@ -2204,7 +2204,7 @@ type DeleteTeamDiscussionCommentInput struct {
 	// The ID of the comment to delete.
 	ID ID "json:\"id\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteTeamDiscussionCommentInput implements the Input interface.
@@ -2218,7 +2218,7 @@ type DeleteTeamDiscussionInput struct {
 	// The discussion ID to delete.
 	ID ID "json:\"id\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteTeamDiscussionInput implements the Input interface.
@@ -2232,7 +2232,7 @@ type DeleteVerifiableDomainInput struct {
 	// The ID of the verifiable domain to delete.
 	ID ID "json:\"id\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DeleteVerifiableDomainInput implements the Input interface.
@@ -2366,7 +2366,7 @@ type DequeuePullRequestInput struct {
 	// The ID of the pull request to be dequeued.
 	ID ID "json:\"id\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DequeuePullRequestInput implements the Input interface.
@@ -2390,7 +2390,7 @@ type DisablePullRequestAutoMergeInput struct {
 	// ID of the pull request to disable auto merge on.
 	PullRequestID ID "json:\"pullRequestId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DisablePullRequestAutoMergeInput implements the Input interface.
@@ -2490,7 +2490,7 @@ type DismissPullRequestReviewInput struct {
 	// The contents of the pull request review dismissal message.
 	Message string "json:\"message\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DismissPullRequestReviewInput implements the Input interface.
@@ -2522,7 +2522,7 @@ type DismissRepositoryVulnerabilityAlertInput struct {
 	// The reason the Dependabot alert is being dismissed.
 	DismissReason DismissReason "json:\"dismissReason\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that DismissRepositoryVulnerabilityAlertInput implements the Input interface.
@@ -2554,11 +2554,11 @@ type DraftPullRequestReviewThread struct {
 	// The line of the blob to which the thread refers. The end of the line range for multi-line comments.
 	Line int "json:\"line\""
 	// The side of the diff on which the line resides. For multi-line comments, this is the side for the end of the line range.
-	Side *DiffSide "json:\"side\""
+	Side *DiffSide "json:\"side,omitempty\""
 	// The first line of the range to which the comment refers.
-	StartLine *int "json:\"startLine\""
+	StartLine *int "json:\"startLine,omitempty\""
 	// The side of the diff on which the start line resides.
-	StartSide *DiffSide "json:\"startSide\""
+	StartSide *DiffSide "json:\"startSide,omitempty\""
 	// Body of the comment to leave.
 	Body string "json:\"body\""
 }
@@ -2574,17 +2574,17 @@ type EnablePullRequestAutoMergeInput struct {
 	// ID of the pull request to enable auto-merge on.
 	PullRequestID ID "json:\"pullRequestId\""
 	// Commit headline to use for the commit when the PR is mergable; if omitted, a default message will be used. NOTE: when merging with a merge queue any input value for commit headline is ignored.
-	CommitHeadline *string "json:\"commitHeadline\""
+	CommitHeadline *string "json:\"commitHeadline,omitempty\""
 	// Commit body to use for the commit when the PR is mergable; if omitted, a default message will be used. NOTE: when merging with a merge queue any input value for commit message is ignored.
-	CommitBody *string "json:\"commitBody\""
+	CommitBody *string "json:\"commitBody,omitempty\""
 	// The merge method to use. If omitted, defaults to `MERGE`. NOTE: when merging with a merge queue any input value for merge method is ignored.
-	MergeMethod *PullRequestMergeMethod "json:\"mergeMethod\""
+	MergeMethod *PullRequestMergeMethod "json:\"mergeMethod,omitempty\""
 	// The email address to associate with this merge.
-	AuthorEmail *string "json:\"authorEmail\""
+	AuthorEmail *string "json:\"authorEmail,omitempty\""
 	// The expected head OID of the pull request.
-	ExpectedHeadOid *GitObjectID "json:\"expectedHeadOid\""
+	ExpectedHeadOid *GitObjectID "json:\"expectedHeadOid,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that EnablePullRequestAutoMergeInput implements the Input interface.
@@ -2598,11 +2598,11 @@ type EnqueuePullRequestInput struct {
 	// The ID of the pull request to enqueue.
 	PullRequestID ID "json:\"pullRequestId\""
 	// Add the pull request to the front of the queue.
-	Jump *bool "json:\"jump\""
+	Jump *bool "json:\"jump,omitempty\""
 	// The expected head OID of the pull request.
-	ExpectedHeadOid *GitObjectID "json:\"expectedHeadOid\""
+	ExpectedHeadOid *GitObjectID "json:\"expectedHeadOid,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that EnqueuePullRequestInput implements the Input interface.
@@ -3026,9 +3026,9 @@ func (FileAddition) isInput() {}
 //     }.
 type FileChanges struct {
 	// Files to delete.
-	Deletions *[]FileDeletion "json:\"deletions\""
+	Deletions *[]FileDeletion "json:\"deletions,omitempty\""
 	// File to add or change.
-	Additions *[]FileAddition "json:\"additions\""
+	Additions *[]FileAddition "json:\"additions,omitempty\""
 }
 
 // Compile-time assertion that FileChanges implements the Input interface.
@@ -3066,7 +3066,7 @@ type FollowOrganizationInput struct {
 	// ID of the organization to follow.
 	OrganizationID ID "json:\"organizationId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that FollowOrganizationInput implements the Input interface.
@@ -3080,7 +3080,7 @@ type FollowUserInput struct {
 	// ID of the user to follow.
 	UserID ID "json:\"userId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that FollowUserInput implements the Input interface.
@@ -3202,7 +3202,7 @@ type GrantEnterpriseOrganizationsMigratorRoleInput struct {
 	// The login of the user to grant the migrator role.
 	Login string "json:\"login\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that GrantEnterpriseOrganizationsMigratorRoleInput implements the Input interface.
@@ -3220,7 +3220,7 @@ type GrantMigratorRoleInput struct {
 	// Specifies the type of the actor, can be either USER or TEAM.
 	ActorType ActorType "json:\"actorType\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that GrantMigratorRoleInput implements the Input interface.
@@ -3246,13 +3246,13 @@ type InviteEnterpriseAdminInput struct {
 	// The ID of the enterprise to which you want to invite an administrator.
 	EnterpriseID ID "json:\"enterpriseId\""
 	// The login of a user to invite as an administrator.
-	Invitee *string "json:\"invitee\""
+	Invitee *string "json:\"invitee,omitempty\""
 	// The email of the person to invite as an administrator.
-	Email *string "json:\"email\""
+	Email *string "json:\"email,omitempty\""
 	// The role of the administrator.
-	Role *EnterpriseAdministratorRole "json:\"role\""
+	Role *EnterpriseAdministratorRole "json:\"role,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that InviteEnterpriseAdminInput implements the Input interface.
@@ -3340,23 +3340,23 @@ const (
 // IssueFilters represents ways in which to filter lists of issues.
 type IssueFilters struct {
 	// List issues assigned to given name. Pass in `null` for issues with no assigned user, and `*` for issues assigned to any user.
-	Assignee *string "json:\"assignee\""
+	Assignee *string "json:\"assignee,omitempty\""
 	// List issues created by given name.
-	CreatedBy *string "json:\"createdBy\""
+	CreatedBy *string "json:\"createdBy,omitempty\""
 	// List issues where the list of label names exist on the issue.
-	Labels *[]string "json:\"labels\""
+	Labels *[]string "json:\"labels,omitempty\""
 	// List issues where the given name is mentioned in the issue.
-	Mentioned *string "json:\"mentioned\""
+	Mentioned *string "json:\"mentioned,omitempty\""
 	// List issues by given milestone argument. If an string representation of an integer is passed, it should refer to a milestone by its database ID. Pass in `null` for issues with no milestone, and `*` for issues that are assigned to any milestone.
-	Milestone *string "json:\"milestone\""
+	Milestone *string "json:\"milestone,omitempty\""
 	// List issues by given milestone argument. If an string representation of an integer is passed, it should refer to a milestone by its number field. Pass in `null` for issues with no milestone, and `*` for issues that are assigned to any milestone.
-	MilestoneNumber *string "json:\"milestoneNumber\""
+	MilestoneNumber *string "json:\"milestoneNumber,omitempty\""
 	// List issues that have been updated at or after the given date.
-	Since *DateTime "json:\"since\""
+	Since *DateTime "json:\"since,omitempty\""
 	// List issues filtered by the list of states given.
-	States *[]IssueState "json:\"states\""
+	States *[]IssueState "json:\"states,omitempty\""
 	// List issues subscribed to by viewer.
-	ViewerSubscribed *bool "json:\"viewerSubscribed\""
+	ViewerSubscribed *bool "json:\"viewerSubscribed,omitempty\""
 }
 
 // Compile-time assertion that IssueFilters implements the Input interface.
@@ -3534,7 +3534,7 @@ type LinkProjectV2ToRepositoryInput struct {
 	// The ID of the repository to link to the project.
 	RepositoryID ID "json:\"repositoryId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that LinkProjectV2ToRepositoryInput implements the Input interface.
@@ -3550,7 +3550,7 @@ type LinkProjectV2ToTeamInput struct {
 	// The ID of the team to link to the project.
 	TeamID ID "json:\"teamId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that LinkProjectV2ToTeamInput implements the Input interface.
@@ -3566,7 +3566,7 @@ type LinkRepositoryToProjectInput struct {
 	// The ID of the Repository to link to a Project.
 	RepositoryID ID "json:\"repositoryId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that LinkRepositoryToProjectInput implements the Input interface.
@@ -3580,9 +3580,9 @@ type LockLockableInput struct {
 	// ID of the item to be locked.
 	LockableID ID "json:\"lockableId\""
 	// A reason for why the item will be locked.
-	LockReason *LockReason "json:\"lockReason\""
+	LockReason *LockReason "json:\"lockReason,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that LockLockableInput implements the Input interface.
@@ -3634,7 +3634,7 @@ type MarkDiscussionCommentAsAnswerInput struct {
 	// The Node ID of the discussion comment to mark as an answer.
 	ID ID "json:\"id\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that MarkDiscussionCommentAsAnswerInput implements the Input interface.
@@ -3650,7 +3650,7 @@ type MarkFileAsViewedInput struct {
 	// The path of the file to mark as viewed.
 	Path string "json:\"path\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that MarkFileAsViewedInput implements the Input interface.
@@ -3664,7 +3664,7 @@ type MarkProjectV2AsTemplateInput struct {
 	// The ID of the Project to mark as a template.
 	ProjectID ID "json:\"projectId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that MarkProjectV2AsTemplateInput implements the Input interface.
@@ -3678,7 +3678,7 @@ type MarkPullRequestReadyForReviewInput struct {
 	// ID of the pull request to be marked as ready for review.
 	PullRequestID ID "json:\"pullRequestId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that MarkPullRequestReadyForReviewInput implements the Input interface.
@@ -3696,11 +3696,11 @@ type MergeBranchInput struct {
 	// The head to merge into the base branch. This can be a branch name or a commit GitObjectID.
 	Head string "json:\"head\""
 	// Message to use for the merge commit. If omitted, a default will be used.
-	CommitMessage *string "json:\"commitMessage\""
+	CommitMessage *string "json:\"commitMessage,omitempty\""
 	// The email address to associate with this commit.
-	AuthorEmail *string "json:\"authorEmail\""
+	AuthorEmail *string "json:\"authorEmail,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that MergeBranchInput implements the Input interface.
@@ -3736,17 +3736,17 @@ type MergePullRequestInput struct {
 	// ID of the pull request to be merged.
 	PullRequestID ID "json:\"pullRequestId\""
 	// Commit headline to use for the merge commit; if omitted, a default message will be used.
-	CommitHeadline *string "json:\"commitHeadline\""
+	CommitHeadline *string "json:\"commitHeadline,omitempty\""
 	// Commit body to use for the merge commit; if omitted, a default message will be used.
-	CommitBody *string "json:\"commitBody\""
+	CommitBody *string "json:\"commitBody,omitempty\""
 	// OID that the pull request head ref must match to allow merge; if omitted, no check is performed.
-	ExpectedHeadOid *GitObjectID "json:\"expectedHeadOid\""
+	ExpectedHeadOid *GitObjectID "json:\"expectedHeadOid,omitempty\""
 	// The merge method to use. If omitted, defaults to 'MERGE'.
-	MergeMethod *PullRequestMergeMethod "json:\"mergeMethod\""
+	MergeMethod *PullRequestMergeMethod "json:\"mergeMethod,omitempty\""
 	// The email address to associate with this merge.
-	AuthorEmail *string "json:\"authorEmail\""
+	AuthorEmail *string "json:\"authorEmail,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that MergePullRequestInput implements the Input interface.
@@ -3870,7 +3870,7 @@ type MinimizeCommentInput struct {
 	// The classification of comment.
 	Classifier ReportedContentClassifiers "json:\"classifier\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that MinimizeCommentInput implements the Input interface.
@@ -3886,9 +3886,9 @@ type MoveProjectCardInput struct {
 	// The id of the column to move it into.
 	ColumnID ID "json:\"columnId\""
 	// Place the new card after the card with this id. Pass null to place it at the top.
-	AfterCardID *ID "json:\"afterCardId\""
+	AfterCardID *ID "json:\"afterCardId,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that MoveProjectCardInput implements the Input interface.
@@ -3902,9 +3902,9 @@ type MoveProjectColumnInput struct {
 	// The id of the column to move.
 	ColumnID ID "json:\"columnId\""
 	// Place the new column after the column with this id. Pass null to place it at the front.
-	AfterColumnID *ID "json:\"afterColumnId\""
+	AfterColumnID *ID "json:\"afterColumnId,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that MoveProjectColumnInput implements the Input interface.
@@ -4248,9 +4248,9 @@ const (
 // PackageFileOrder represents ways in which lists of package files can be ordered upon return.
 type PackageFileOrder struct {
 	// The field in which to order package files by.
-	Field *PackageFileOrderField "json:\"field\""
+	Field *PackageFileOrderField "json:\"field,omitempty\""
 	// The direction in which to order package files by the specified field.
-	Direction *OrderDirection "json:\"direction\""
+	Direction *OrderDirection "json:\"direction,omitempty\""
 }
 
 // Compile-time assertion that PackageFileOrder implements the Input interface.
@@ -4270,9 +4270,9 @@ const (
 // PackageOrder represents ways in which lists of packages can be ordered upon return.
 type PackageOrder struct {
 	// The field in which to order packages by.
-	Field *PackageOrderField "json:\"field\""
+	Field *PackageOrderField "json:\"field,omitempty\""
 	// The direction in which to order packages by the specified field.
-	Direction *OrderDirection "json:\"direction\""
+	Direction *OrderDirection "json:\"direction,omitempty\""
 }
 
 // Compile-time assertion that PackageOrder implements the Input interface.
@@ -4312,9 +4312,9 @@ const (
 // PackageVersionOrder represents ways in which lists of package versions can be ordered upon return.
 type PackageVersionOrder struct {
 	// The field in which to order package versions by.
-	Field *PackageVersionOrderField "json:\"field\""
+	Field *PackageVersionOrderField "json:\"field,omitempty\""
 	// The direction in which to order package versions by the specified field.
-	Direction *OrderDirection "json:\"direction\""
+	Direction *OrderDirection "json:\"direction,omitempty\""
 }
 
 // Compile-time assertion that PackageVersionOrder implements the Input interface.
@@ -4354,7 +4354,7 @@ type PinIssueInput struct {
 	// The ID of the issue to be pinned.
 	IssueID ID "json:\"issueId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that PinIssueInput implements the Input interface.
@@ -4506,9 +4506,9 @@ const (
 // ProjectV2Collaborator represents a collaborator to update on a project. Only one of the userId or teamId should be provided.
 type ProjectV2Collaborator struct {
 	// The ID of the user as a collaborator.
-	UserID *ID "json:\"userId\""
+	UserID *ID "json:\"userId,omitempty\""
 	// The ID of the team as a collaborator.
-	TeamID *ID "json:\"teamId\""
+	TeamID *ID "json:\"teamId,omitempty\""
 	// The role to grant the collaborator.
 	Role ProjectV2Roles "json:\"role\""
 }
@@ -4596,15 +4596,15 @@ const (
 // ProjectV2FieldValue represents the values that can be used to update a field of an item inside a Project. Only 1 value can be updated at a time.
 type ProjectV2FieldValue struct {
 	// The text to set on the field.
-	Text *string "json:\"text\""
+	Text *string "json:\"text,omitempty\""
 	// The number to set on the field.
-	Number *float64 "json:\"number\""
+	Number *float64 "json:\"number,omitempty\""
 	// The ISO 8601 date to set on the field.
-	Date *Date "json:\"date\""
+	Date *Date "json:\"date,omitempty\""
 	// The id of the single select option to set on the field.
-	SingleSelectOptionID *string "json:\"singleSelectOptionId\""
+	SingleSelectOptionID *string "json:\"singleSelectOptionId,omitempty\""
 	// The id of the iteration to set on the field.
-	IterationID *string "json:\"iterationId\""
+	IterationID *string "json:\"iterationId,omitempty\""
 }
 
 // Compile-time assertion that ProjectV2FieldValue implements the Input interface.
@@ -4616,7 +4616,7 @@ func (ProjectV2FieldValue) isInput() {}
 // ProjectV2Filters represents ways in which to filter lists of projects.
 type ProjectV2Filters struct {
 	// List project v2 filtered by the state given.
-	State *ProjectV2State "json:\"state\""
+	State *ProjectV2State "json:\"state,omitempty\""
 }
 
 // Compile-time assertion that ProjectV2Filters implements the Input interface.
@@ -4844,7 +4844,7 @@ type PublishSponsorsTierInput struct {
 	// The ID of the draft tier to publish.
 	TierID ID "json:\"tierId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that PublishSponsorsTierInput implements the Input interface.
@@ -5202,7 +5202,7 @@ type RegenerateEnterpriseIdentityProviderRecoveryCodesInput struct {
 	// The ID of the enterprise on which to set an identity provider.
 	EnterpriseID ID "json:\"enterpriseId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RegenerateEnterpriseIdentityProviderRecoveryCodesInput implements the Input interface.
@@ -5216,7 +5216,7 @@ type RegenerateVerifiableDomainTokenInput struct {
 	// The ID of the verifiable domain to regenerate the verification token of.
 	ID ID "json:\"id\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RegenerateVerifiableDomainTokenInput implements the Input interface.
@@ -5232,9 +5232,9 @@ type RejectDeploymentsInput struct {
 	// The ids of environments to reject deployments.
 	EnvironmentIDs []ID "json:\"environmentIds\""
 	// Optional comment for rejecting deployments.
-	Comment *string "json:\"comment\""
+	Comment *string "json:\"comment,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RejectDeploymentsInput implements the Input interface.
@@ -5274,7 +5274,7 @@ type RemoveAssigneesFromAssignableInput struct {
 	// The id of users to remove as assignees.
 	AssigneeIDs []ID "json:\"assigneeIds\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RemoveAssigneesFromAssignableInput implements the Input interface.
@@ -5290,7 +5290,7 @@ type RemoveEnterpriseAdminInput struct {
 	// The login of the user to remove as an administrator.
 	Login string "json:\"login\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RemoveEnterpriseAdminInput implements the Input interface.
@@ -5304,7 +5304,7 @@ type RemoveEnterpriseIdentityProviderInput struct {
 	// The ID of the enterprise from which to remove the identity provider.
 	EnterpriseID ID "json:\"enterpriseId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RemoveEnterpriseIdentityProviderInput implements the Input interface.
@@ -5320,7 +5320,7 @@ type RemoveEnterpriseMemberInput struct {
 	// The ID of the user to remove from the enterprise.
 	UserID ID "json:\"userId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RemoveEnterpriseMemberInput implements the Input interface.
@@ -5336,7 +5336,7 @@ type RemoveEnterpriseOrganizationInput struct {
 	// The ID of the organization to remove from the enterprise.
 	OrganizationID ID "json:\"organizationId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RemoveEnterpriseOrganizationInput implements the Input interface.
@@ -5352,7 +5352,7 @@ type RemoveEnterpriseSupportEntitlementInput struct {
 	// The login of a member who will lose the support entitlement.
 	Login string "json:\"login\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RemoveEnterpriseSupportEntitlementInput implements the Input interface.
@@ -5368,7 +5368,7 @@ type RemoveLabelsFromLabelableInput struct {
 	// The ids of labels to remove.
 	LabelIDs []ID "json:\"labelIds\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RemoveLabelsFromLabelableInput implements the Input interface.
@@ -5384,7 +5384,7 @@ type RemoveOutsideCollaboratorInput struct {
 	// The ID of the organization to remove the outside collaborator from.
 	OrganizationID ID "json:\"organizationId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RemoveOutsideCollaboratorInput implements the Input interface.
@@ -5400,7 +5400,7 @@ type RemoveReactionInput struct {
 	// The name of the emoji reaction to remove.
 	Content ReactionContent "json:\"content\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RemoveReactionInput implements the Input interface.
@@ -5414,7 +5414,7 @@ type RemoveStarInput struct {
 	// The Starrable ID to unstar.
 	StarrableID ID "json:\"starrableId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RemoveStarInput implements the Input interface.
@@ -5428,7 +5428,7 @@ type RemoveUpvoteInput struct {
 	// The Node ID of the discussion or comment to remove upvote.
 	SubjectID ID "json:\"subjectId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RemoveUpvoteInput implements the Input interface.
@@ -5442,7 +5442,7 @@ type ReopenDiscussionInput struct {
 	// ID of the discussion to be reopened.
 	DiscussionID ID "json:\"discussionId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that ReopenDiscussionInput implements the Input interface.
@@ -5456,7 +5456,7 @@ type ReopenIssueInput struct {
 	// ID of the issue to be opened.
 	IssueID ID "json:\"issueId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that ReopenIssueInput implements the Input interface.
@@ -5470,7 +5470,7 @@ type ReopenPullRequestInput struct {
 	// ID of the pull request to be reopened.
 	PullRequestID ID "json:\"pullRequestId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that ReopenPullRequestInput implements the Input interface.
@@ -5740,7 +5740,7 @@ type RepositoryNameConditionTargetInput struct {
 	// Array of repository names or patterns to include. One of these patterns must match for the condition to pass. Also accepts `~ALL` to include all repositories.
 	Include []string "json:\"include\""
 	// Target changes that match these patterns will be prevented except by those with bypass permissions.
-	Protected *bool "json:\"protected\""
+	Protected *bool "json:\"protected,omitempty\""
 }
 
 // Compile-time assertion that RepositoryNameConditionTargetInput implements the Input interface.
@@ -5808,11 +5808,11 @@ const (
 // RepositoryRuleConditionsInput represents specifies the conditions required for a ruleset to evaluate.
 type RepositoryRuleConditionsInput struct {
 	// Configuration for the ref_name condition.
-	RefName *RefNameConditionTargetInput "json:\"refName\""
+	RefName *RefNameConditionTargetInput "json:\"refName,omitempty\""
 	// Configuration for the repository_name condition.
-	RepositoryName *RepositoryNameConditionTargetInput "json:\"repositoryName\""
+	RepositoryName *RepositoryNameConditionTargetInput "json:\"repositoryName,omitempty\""
 	// Configuration for the repository_id condition.
-	RepositoryID *RepositoryIDConditionTargetInput "json:\"repositoryId\""
+	RepositoryID *RepositoryIDConditionTargetInput "json:\"repositoryId,omitempty\""
 }
 
 // Compile-time assertion that RepositoryRuleConditionsInput implements the Input interface.
@@ -5824,11 +5824,11 @@ func (RepositoryRuleConditionsInput) isInput() {}
 // RepositoryRuleInput represents specifies the attributes for a new or updated rule.
 type RepositoryRuleInput struct {
 	// Optional ID of this rule when updating.
-	ID *ID "json:\"id\""
+	ID *ID "json:\"id,omitempty\""
 	// The type of rule to create.
 	Type RepositoryRuleType "json:\"type\""
 	// The parameters for the rule.
-	Parameters *RuleParametersInput "json:\"parameters\""
+	Parameters *RuleParametersInput "json:\"parameters,omitempty\""
 }
 
 // Compile-time assertion that RepositoryRuleInput implements the Input interface.
@@ -5884,11 +5884,11 @@ const (
 // RepositoryRulesetBypassActorInput represents specifies the attributes for a new or updated ruleset bypass actor. Only one of `actor_id`, `repository_role_database_id`, or `organization_admin` should be specified.
 type RepositoryRulesetBypassActorInput struct {
 	// For Team and Integration bypasses, the Team or Integration ID.
-	ActorID *ID "json:\"actorId\""
+	ActorID *ID "json:\"actorId,omitempty\""
 	// For role bypasses, the role database ID.
-	RepositoryRoleDatabaseID *int "json:\"repositoryRoleDatabaseId\""
+	RepositoryRoleDatabaseID *int "json:\"repositoryRoleDatabaseId,omitempty\""
 	// For org admin bupasses, true.
-	OrganizationAdmin *bool "json:\"organizationAdmin\""
+	OrganizationAdmin *bool "json:\"organizationAdmin,omitempty\""
 	// The bypass mode for this actor.
 	BypassMode RepositoryRulesetBypassActorBypassMode "json:\"bypassMode\""
 }
@@ -5950,13 +5950,13 @@ type RequestReviewsInput struct {
 	// The Node ID of the pull request to modify.
 	PullRequestID ID "json:\"pullRequestId\""
 	// The Node IDs of the user to request.
-	UserIDs *[]ID "json:\"userIds\""
+	UserIDs *[]ID "json:\"userIds,omitempty\""
 	// The Node IDs of the team to request.
-	TeamIDs *[]ID "json:\"teamIds\""
+	TeamIDs *[]ID "json:\"teamIds,omitempty\""
 	// Add users to the set rather than replace.
-	Union *bool "json:\"union\""
+	Union *bool "json:\"union,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RequestReviewsInput implements the Input interface.
@@ -5998,7 +5998,7 @@ type RequiredStatusCheckInput struct {
 	// Status check context that must pass for commits to be accepted to the matching branch.
 	Context string "json:\"context\""
 	// The ID of the App that must set the status in order for it to be accepted. Omit this value to use whichever app has recently been setting this status, or use "any" to allow any app to set the status.
-	AppID *ID "json:\"appId\""
+	AppID *ID "json:\"appId,omitempty\""
 }
 
 // Compile-time assertion that RequiredStatusCheckInput implements the Input interface.
@@ -6028,7 +6028,7 @@ type RerequestCheckSuiteInput struct {
 	// The Node ID of the check suite.
 	CheckSuiteID ID "json:\"checkSuiteId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RerequestCheckSuiteInput implements the Input interface.
@@ -6042,7 +6042,7 @@ type ResolveReviewThreadInput struct {
 	// The ID of the thread to resolve.
 	ThreadID ID "json:\"threadId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that ResolveReviewThreadInput implements the Input interface.
@@ -6056,7 +6056,7 @@ type RetireSponsorsTierInput struct {
 	// The ID of the published tier to retire.
 	TierID ID "json:\"tierId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RetireSponsorsTierInput implements the Input interface.
@@ -6070,13 +6070,13 @@ type RevertPullRequestInput struct {
 	// The ID of the pull request to revert.
 	PullRequestID ID "json:\"pullRequestId\""
 	// The title of the revert pull request.
-	Title *string "json:\"title\""
+	Title *string "json:\"title,omitempty\""
 	// The description of the revert pull request.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// Indicates whether the revert pull request should be a draft.
-	Draft *bool "json:\"draft\""
+	Draft *bool "json:\"draft,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RevertPullRequestInput implements the Input interface.
@@ -6092,7 +6092,7 @@ type RevokeEnterpriseOrganizationsMigratorRoleInput struct {
 	// The login of the user to revoke the migrator role.
 	Login string "json:\"login\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RevokeEnterpriseOrganizationsMigratorRoleInput implements the Input interface.
@@ -6110,7 +6110,7 @@ type RevokeMigratorRoleInput struct {
 	// Specifies the type of the actor, can be either USER or TEAM.
 	ActorType ActorType "json:\"actorType\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that RevokeMigratorRoleInput implements the Input interface.
@@ -6146,23 +6146,23 @@ const (
 // RuleParametersInput represents specifies the parameters for a `RepositoryRule` object. Only one of the fields should be specified.
 type RuleParametersInput struct {
 	// Parameters used for the `update` rule type.
-	Update *UpdateParametersInput "json:\"update\""
+	Update *UpdateParametersInput "json:\"update,omitempty\""
 	// Parameters used for the `required_deployments` rule type.
-	RequiredDeployments *RequiredDeploymentsParametersInput "json:\"requiredDeployments\""
+	RequiredDeployments *RequiredDeploymentsParametersInput "json:\"requiredDeployments,omitempty\""
 	// Parameters used for the `pull_request` rule type.
-	PullRequest *PullRequestParametersInput "json:\"pullRequest\""
+	PullRequest *PullRequestParametersInput "json:\"pullRequest,omitempty\""
 	// Parameters used for the `required_status_checks` rule type.
-	RequiredStatusChecks *RequiredStatusChecksParametersInput "json:\"requiredStatusChecks\""
+	RequiredStatusChecks *RequiredStatusChecksParametersInput "json:\"requiredStatusChecks,omitempty\""
 	// Parameters used for the `commit_message_pattern` rule type.
-	CommitMessagePattern *CommitMessagePatternParametersInput "json:\"commitMessagePattern\""
+	CommitMessagePattern *CommitMessagePatternParametersInput "json:\"commitMessagePattern,omitempty\""
 	// Parameters used for the `commit_author_email_pattern` rule type.
-	CommitAuthorEmailPattern *CommitAuthorEmailPatternParametersInput "json:\"commitAuthorEmailPattern\""
+	CommitAuthorEmailPattern *CommitAuthorEmailPatternParametersInput "json:\"commitAuthorEmailPattern,omitempty\""
 	// Parameters used for the `committer_email_pattern` rule type.
-	CommitterEmailPattern *CommitterEmailPatternParametersInput "json:\"committerEmailPattern\""
+	CommitterEmailPattern *CommitterEmailPatternParametersInput "json:\"committerEmailPattern,omitempty\""
 	// Parameters used for the `branch_name_pattern` rule type.
-	BranchNamePattern *BranchNamePatternParametersInput "json:\"branchNamePattern\""
+	BranchNamePattern *BranchNamePatternParametersInput "json:\"branchNamePattern,omitempty\""
 	// Parameters used for the `tag_name_pattern` rule type.
-	TagNamePattern *TagNamePatternParametersInput "json:\"tagNamePattern\""
+	TagNamePattern *TagNamePatternParametersInput "json:\"tagNamePattern,omitempty\""
 }
 
 // Compile-time assertion that RuleParametersInput implements the Input interface.
@@ -6366,7 +6366,7 @@ type SetEnterpriseIdentityProviderInput struct {
 	// The URL endpoint for the identity provider's SAML SSO.
 	SsoURL URI "json:\"ssoUrl\""
 	// The Issuer Entity ID for the SAML identity provider.
-	Issuer *string "json:\"issuer\""
+	Issuer *string "json:\"issuer,omitempty\""
 	// The x509 certificate used by the identity provider to sign assertions and responses.
 	IdpCertificate string "json:\"idpCertificate\""
 	// The signature algorithm used to sign SAML requests for the identity provider.
@@ -6374,7 +6374,7 @@ type SetEnterpriseIdentityProviderInput struct {
 	// The digest algorithm used to sign SAML requests for the identity provider.
 	DigestMethod SamlDigestAlgorithm "json:\"digestMethod\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that SetEnterpriseIdentityProviderInput implements the Input interface.
@@ -6390,9 +6390,9 @@ type SetOrganizationInteractionLimitInput struct {
 	// The limit to set.
 	Limit RepositoryInteractionLimit "json:\"limit\""
 	// When this limit should expire.
-	Expiry *RepositoryInteractionLimitExpiry "json:\"expiry\""
+	Expiry *RepositoryInteractionLimitExpiry "json:\"expiry,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that SetOrganizationInteractionLimitInput implements the Input interface.
@@ -6408,9 +6408,9 @@ type SetRepositoryInteractionLimitInput struct {
 	// The limit to set.
 	Limit RepositoryInteractionLimit "json:\"limit\""
 	// When this limit should expire.
-	Expiry *RepositoryInteractionLimitExpiry "json:\"expiry\""
+	Expiry *RepositoryInteractionLimitExpiry "json:\"expiry,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that SetRepositoryInteractionLimitInput implements the Input interface.
@@ -6426,9 +6426,9 @@ type SetUserInteractionLimitInput struct {
 	// The limit to set.
 	Limit RepositoryInteractionLimit "json:\"limit\""
 	// When this limit should expire.
-	Expiry *RepositoryInteractionLimitExpiry "json:\"expiry\""
+	Expiry *RepositoryInteractionLimitExpiry "json:\"expiry,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that SetUserInteractionLimitInput implements the Input interface.
@@ -7214,7 +7214,7 @@ type StartOrganizationMigrationInput struct {
 	// The migration source access token.
 	SourceAccessToken string "json:\"sourceAccessToken\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that StartOrganizationMigrationInput implements the Input interface.
@@ -7230,27 +7230,27 @@ type StartRepositoryMigrationInput struct {
 	// The ID of the organization that will own the imported repository.
 	OwnerID ID "json:\"ownerId\""
 	// The URL of the source repository.
-	SourceRepositoryURL *URI "json:\"sourceRepositoryUrl\""
+	SourceRepositoryURL *URI "json:\"sourceRepositoryUrl,omitempty\""
 	// The name of the imported repository.
 	RepositoryName string "json:\"repositoryName\""
 	// Whether to continue the migration on error. Defaults to `false`.
-	ContinueOnError *bool "json:\"continueOnError\""
+	ContinueOnError *bool "json:\"continueOnError,omitempty\""
 	// The signed URL to access the user-uploaded git archive.
-	GitArchiveURL *string "json:\"gitArchiveUrl\""
+	GitArchiveURL *string "json:\"gitArchiveUrl,omitempty\""
 	// The signed URL to access the user-uploaded metadata archive.
-	MetadataArchiveURL *string "json:\"metadataArchiveUrl\""
+	MetadataArchiveURL *string "json:\"metadataArchiveUrl,omitempty\""
 	// The migration source access token.
-	AccessToken *string "json:\"accessToken\""
+	AccessToken *string "json:\"accessToken,omitempty\""
 	// The GitHub personal access token of the user importing to the target repository.
-	GitHubPat *string "json:\"githubPat\""
+	GitHubPat *string "json:\"githubPat,omitempty\""
 	// Whether to skip migrating releases for the repository.
-	SkipReleases *bool "json:\"skipReleases\""
+	SkipReleases *bool "json:\"skipReleases,omitempty\""
 	// The visibility of the imported repository.
-	TargetRepoVisibility *string "json:\"targetRepoVisibility\""
+	TargetRepoVisibility *string "json:\"targetRepoVisibility,omitempty\""
 	// Whether to lock the source repository.
-	LockSource *bool "json:\"lockSource\""
+	LockSource *bool "json:\"lockSource,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that StartRepositoryMigrationInput implements the Input interface.
@@ -7264,7 +7264,7 @@ type StatusCheckConfigurationInput struct {
 	// The status check context name that must be present on the commit.
 	Context string "json:\"context\""
 	// The optional integration ID that this status check must originate from.
-	IntegrationID *int "json:\"integrationId\""
+	IntegrationID *int "json:\"integrationId,omitempty\""
 }
 
 // Compile-time assertion that StatusCheckConfigurationInput implements the Input interface.
@@ -7292,15 +7292,15 @@ const (
 // SubmitPullRequestReviewInput is an autogenerated input type of SubmitPullRequestReview.
 type SubmitPullRequestReviewInput struct {
 	// The Pull Request ID to submit any pending reviews.
-	PullRequestID *ID "json:\"pullRequestId\""
+	PullRequestID *ID "json:\"pullRequestId,omitempty\""
 	// The Pull Request Review ID to submit.
-	PullRequestReviewID *ID "json:\"pullRequestReviewId\""
+	PullRequestReviewID *ID "json:\"pullRequestReviewId,omitempty\""
 	// The event to send to the Pull Request Review.
 	Event PullRequestReviewEvent "json:\"event\""
 	// The text field to set on the Pull Request Review.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that SubmitPullRequestReviewInput implements the Input interface.
@@ -7324,9 +7324,9 @@ const (
 // TagNamePatternParametersInput represents parameters to be used for the tag_name_pattern rule.
 type TagNamePatternParametersInput struct {
 	// How this rule will appear to users.
-	Name *string "json:\"name\""
+	Name *string "json:\"name,omitempty\""
 	// If true, the rule will fail if the pattern matches.
-	Negate *bool "json:\"negate\""
+	Negate *bool "json:\"negate,omitempty\""
 	// The operator to use for matching.
 	Operator string "json:\"operator\""
 	// The pattern to match with.
@@ -7544,7 +7544,7 @@ type TransferEnterpriseOrganizationInput struct {
 	// The ID of the enterprise where the organization should be transferred.
 	DestinationEnterpriseID ID "json:\"destinationEnterpriseId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that TransferEnterpriseOrganizationInput implements the Input interface.
@@ -7560,9 +7560,9 @@ type TransferIssueInput struct {
 	// The Node ID of the repository the issue should be transferred to.
 	RepositoryID ID "json:\"repositoryId\""
 	// Whether to create labels if they don't exist in the target repository (matched by name).
-	CreateLabelsIfMissing *bool "json:\"createLabelsIfMissing\""
+	CreateLabelsIfMissing *bool "json:\"createLabelsIfMissing,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that TransferIssueInput implements the Input interface.
@@ -7578,7 +7578,7 @@ type UnarchiveProjectV2ItemInput struct {
 	// The ID of the ProjectV2Item to unarchive.
 	ItemID ID "json:\"itemId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UnarchiveProjectV2ItemInput implements the Input interface.
@@ -7592,7 +7592,7 @@ type UnarchiveRepositoryInput struct {
 	// The ID of the repository to unarchive.
 	RepositoryID ID "json:\"repositoryId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UnarchiveRepositoryInput implements the Input interface.
@@ -7606,7 +7606,7 @@ type UnfollowOrganizationInput struct {
 	// ID of the organization to unfollow.
 	OrganizationID ID "json:\"organizationId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UnfollowOrganizationInput implements the Input interface.
@@ -7620,7 +7620,7 @@ type UnfollowUserInput struct {
 	// ID of the user to unfollow.
 	UserID ID "json:\"userId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UnfollowUserInput implements the Input interface.
@@ -7636,7 +7636,7 @@ type UnlinkProjectV2FromRepositoryInput struct {
 	// The ID of the repository to unlink from the project.
 	RepositoryID ID "json:\"repositoryId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UnlinkProjectV2FromRepositoryInput implements the Input interface.
@@ -7652,7 +7652,7 @@ type UnlinkProjectV2FromTeamInput struct {
 	// The ID of the team to unlink from the project.
 	TeamID ID "json:\"teamId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UnlinkProjectV2FromTeamInput implements the Input interface.
@@ -7668,7 +7668,7 @@ type UnlinkRepositoryFromProjectInput struct {
 	// The ID of the Repository linked to the Project.
 	RepositoryID ID "json:\"repositoryId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UnlinkRepositoryFromProjectInput implements the Input interface.
@@ -7682,7 +7682,7 @@ type UnlockLockableInput struct {
 	// ID of the item to be unlocked.
 	LockableID ID "json:\"lockableId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UnlockLockableInput implements the Input interface.
@@ -7696,7 +7696,7 @@ type UnmarkDiscussionCommentAsAnswerInput struct {
 	// The Node ID of the discussion comment to unmark as an answer.
 	ID ID "json:\"id\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UnmarkDiscussionCommentAsAnswerInput implements the Input interface.
@@ -7712,7 +7712,7 @@ type UnmarkFileAsViewedInput struct {
 	// The path of the file to mark as unviewed.
 	Path string "json:\"path\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UnmarkFileAsViewedInput implements the Input interface.
@@ -7728,7 +7728,7 @@ type UnmarkIssueAsDuplicateInput struct {
 	// ID of the issue or pull request currently considered canonical/authoritative/original.
 	CanonicalID ID "json:\"canonicalId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UnmarkIssueAsDuplicateInput implements the Input interface.
@@ -7742,7 +7742,7 @@ type UnmarkProjectV2AsTemplateInput struct {
 	// The ID of the Project to unmark as a template.
 	ProjectID ID "json:\"projectId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UnmarkProjectV2AsTemplateInput implements the Input interface.
@@ -7756,7 +7756,7 @@ type UnminimizeCommentInput struct {
 	// The Node ID of the subject to modify.
 	SubjectID ID "json:\"subjectId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UnminimizeCommentInput implements the Input interface.
@@ -7770,7 +7770,7 @@ type UnpinIssueInput struct {
 	// The ID of the issue to be unpinned.
 	IssueID ID "json:\"issueId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UnpinIssueInput implements the Input interface.
@@ -7784,7 +7784,7 @@ type UnresolveReviewThreadInput struct {
 	// The ID of the thread to unresolve.
 	ThreadID ID "json:\"threadId\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UnresolveReviewThreadInput implements the Input interface.
@@ -7798,61 +7798,61 @@ type UpdateBranchProtectionRuleInput struct {
 	// The global relay id of the branch protection rule to be updated.
 	BranchProtectionRuleID ID "json:\"branchProtectionRuleId\""
 	// The glob-like pattern used to determine matching branches.
-	Pattern *string "json:\"pattern\""
+	Pattern *string "json:\"pattern,omitempty\""
 	// Are approving reviews required to update matching branches.
-	RequiresApprovingReviews *bool "json:\"requiresApprovingReviews\""
+	RequiresApprovingReviews *bool "json:\"requiresApprovingReviews,omitempty\""
 	// Number of approving reviews required to update matching branches.
-	RequiredApprovingReviewCount *int "json:\"requiredApprovingReviewCount\""
+	RequiredApprovingReviewCount *int "json:\"requiredApprovingReviewCount,omitempty\""
 	// Are commits required to be signed.
-	RequiresCommitSignatures *bool "json:\"requiresCommitSignatures\""
+	RequiresCommitSignatures *bool "json:\"requiresCommitSignatures,omitempty\""
 	// Are merge commits prohibited from being pushed to this branch.
-	RequiresLinearHistory *bool "json:\"requiresLinearHistory\""
+	RequiresLinearHistory *bool "json:\"requiresLinearHistory,omitempty\""
 	// Is branch creation a protected operation.
-	BlocksCreations *bool "json:\"blocksCreations\""
+	BlocksCreations *bool "json:\"blocksCreations,omitempty\""
 	// Are force pushes allowed on this branch.
-	AllowsForcePushes *bool "json:\"allowsForcePushes\""
+	AllowsForcePushes *bool "json:\"allowsForcePushes,omitempty\""
 	// Can this branch be deleted.
-	AllowsDeletions *bool "json:\"allowsDeletions\""
+	AllowsDeletions *bool "json:\"allowsDeletions,omitempty\""
 	// Can admins overwrite branch protection.
-	IsAdminEnforced *bool "json:\"isAdminEnforced\""
+	IsAdminEnforced *bool "json:\"isAdminEnforced,omitempty\""
 	// Are status checks required to update matching branches.
-	RequiresStatusChecks *bool "json:\"requiresStatusChecks\""
+	RequiresStatusChecks *bool "json:\"requiresStatusChecks,omitempty\""
 	// Are branches required to be up to date before merging.
-	RequiresStrictStatusChecks *bool "json:\"requiresStrictStatusChecks\""
+	RequiresStrictStatusChecks *bool "json:\"requiresStrictStatusChecks,omitempty\""
 	// Are reviews from code owners required to update matching branches.
-	RequiresCodeOwnerReviews *bool "json:\"requiresCodeOwnerReviews\""
+	RequiresCodeOwnerReviews *bool "json:\"requiresCodeOwnerReviews,omitempty\""
 	// Will new commits pushed to matching branches dismiss pull request review approvals.
-	DismissesStaleReviews *bool "json:\"dismissesStaleReviews\""
+	DismissesStaleReviews *bool "json:\"dismissesStaleReviews,omitempty\""
 	// Is dismissal of pull request reviews restricted.
-	RestrictsReviewDismissals *bool "json:\"restrictsReviewDismissals\""
+	RestrictsReviewDismissals *bool "json:\"restrictsReviewDismissals,omitempty\""
 	// A list of User, Team, or App IDs allowed to dismiss reviews on pull requests targeting matching branches.
-	ReviewDismissalActorIDs *[]ID "json:\"reviewDismissalActorIds\""
+	ReviewDismissalActorIDs *[]ID "json:\"reviewDismissalActorIds,omitempty\""
 	// A list of User, Team, or App IDs allowed to bypass pull requests targeting matching branches.
-	BypassPullRequestActorIDs *[]ID "json:\"bypassPullRequestActorIds\""
+	BypassPullRequestActorIDs *[]ID "json:\"bypassPullRequestActorIds,omitempty\""
 	// A list of User, Team, or App IDs allowed to bypass force push targeting matching branches.
-	BypassForcePushActorIDs *[]ID "json:\"bypassForcePushActorIds\""
+	BypassForcePushActorIDs *[]ID "json:\"bypassForcePushActorIds,omitempty\""
 	// Is pushing to matching branches restricted.
-	RestrictsPushes *bool "json:\"restrictsPushes\""
+	RestrictsPushes *bool "json:\"restrictsPushes,omitempty\""
 	// A list of User, Team, or App IDs allowed to push to matching branches.
-	PushActorIDs *[]ID "json:\"pushActorIds\""
+	PushActorIDs *[]ID "json:\"pushActorIds,omitempty\""
 	// List of required status check contexts that must pass for commits to be accepted to matching branches.
-	RequiredStatusCheckContexts *[]string "json:\"requiredStatusCheckContexts\""
+	RequiredStatusCheckContexts *[]string "json:\"requiredStatusCheckContexts,omitempty\""
 	// The list of required status checks.
-	RequiredStatusChecks *[]RequiredStatusCheckInput "json:\"requiredStatusChecks\""
+	RequiredStatusChecks *[]RequiredStatusCheckInput "json:\"requiredStatusChecks,omitempty\""
 	// Are successful deployments required before merging.
-	RequiresDeployments *bool "json:\"requiresDeployments\""
+	RequiresDeployments *bool "json:\"requiresDeployments,omitempty\""
 	// The list of required deployment environments.
-	RequiredDeploymentEnvironments *[]string "json:\"requiredDeploymentEnvironments\""
+	RequiredDeploymentEnvironments *[]string "json:\"requiredDeploymentEnvironments,omitempty\""
 	// Are conversations required to be resolved before merging.
-	RequiresConversationResolution *bool "json:\"requiresConversationResolution\""
+	RequiresConversationResolution *bool "json:\"requiresConversationResolution,omitempty\""
 	// Whether the most recent push must be approved by someone other than the person who pushed it.
-	RequireLastPushApproval *bool "json:\"requireLastPushApproval\""
+	RequireLastPushApproval *bool "json:\"requireLastPushApproval,omitempty\""
 	// Whether to set the branch as read-only. If this is true, users will not be able to push to the branch.
-	LockBranch *bool "json:\"lockBranch\""
+	LockBranch *bool "json:\"lockBranch,omitempty\""
 	// Whether users can pull changes from upstream when the branch is locked. Set to `true` to allow fork syncing. Set to `false` to prevent fork syncing.
-	LockAllowsFetchAndMerge *bool "json:\"lockAllowsFetchAndMerge\""
+	LockAllowsFetchAndMerge *bool "json:\"lockAllowsFetchAndMerge,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateBranchProtectionRuleInput implements the Input interface.
@@ -7868,25 +7868,25 @@ type UpdateCheckRunInput struct {
 	// The node of the check.
 	CheckRunID ID "json:\"checkRunId\""
 	// The name of the check.
-	Name *string "json:\"name\""
+	Name *string "json:\"name,omitempty\""
 	// The URL of the integrator's site that has the full details of the check.
-	DetailsURL *URI "json:\"detailsUrl\""
+	DetailsURL *URI "json:\"detailsUrl,omitempty\""
 	// A reference for the run on the integrator's system.
-	ExternalID *string "json:\"externalId\""
+	ExternalID *string "json:\"externalId,omitempty\""
 	// The current status.
-	Status *RequestableCheckStatusState "json:\"status\""
+	Status *RequestableCheckStatusState "json:\"status,omitempty\""
 	// The time that the check run began.
-	StartedAt *DateTime "json:\"startedAt\""
+	StartedAt *DateTime "json:\"startedAt,omitempty\""
 	// The final conclusion of the check.
-	Conclusion *CheckConclusionState "json:\"conclusion\""
+	Conclusion *CheckConclusionState "json:\"conclusion,omitempty\""
 	// The time that the check run finished.
-	CompletedAt *DateTime "json:\"completedAt\""
+	CompletedAt *DateTime "json:\"completedAt,omitempty\""
 	// Descriptive details about the run.
-	Output *CheckRunOutput "json:\"output\""
+	Output *CheckRunOutput "json:\"output,omitempty\""
 	// Possible further actions the integrator can perform, which a user may trigger.
-	Actions *[]CheckRunAction "json:\"actions\""
+	Actions *[]CheckRunAction "json:\"actions,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateCheckRunInput implements the Input interface.
@@ -7902,7 +7902,7 @@ type UpdateCheckSuitePreferencesInput struct {
 	// The check suite preferences to modify.
 	AutoTriggerPreferences []CheckSuiteAutoTriggerPreference "json:\"autoTriggerPreferences\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateCheckSuitePreferencesInput implements the Input interface.
@@ -7918,7 +7918,7 @@ type UpdateDiscussionCommentInput struct {
 	// The new contents of the comment body.
 	Body string "json:\"body\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateDiscussionCommentInput implements the Input interface.
@@ -7932,13 +7932,13 @@ type UpdateDiscussionInput struct {
 	// The Node ID of the discussion to update.
 	DiscussionID ID "json:\"discussionId\""
 	// The new discussion title.
-	Title *string "json:\"title\""
+	Title *string "json:\"title,omitempty\""
 	// The new contents of the discussion body.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// The Node ID of a discussion category within the same repository to change this discussion to.
-	CategoryID *ID "json:\"categoryId\""
+	CategoryID *ID "json:\"categoryId,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateDiscussionInput implements the Input interface.
@@ -7956,7 +7956,7 @@ type UpdateEnterpriseAdministratorRoleInput struct {
 	// The new role for the Enterprise administrator.
 	Role EnterpriseAdministratorRole "json:\"role\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseAdministratorRoleInput implements the Input interface.
@@ -7972,9 +7972,9 @@ type UpdateEnterpriseAllowPrivateRepositoryForkingSettingInput struct {
 	// The value for the allow private repository forking setting on the enterprise.
 	SettingValue EnterpriseEnabledDisabledSettingValue "json:\"settingValue\""
 	// The value for the allow private repository forking policy on the enterprise.
-	PolicyValue *EnterpriseAllowPrivateRepositoryForkingPolicyValue "json:\"policyValue\""
+	PolicyValue *EnterpriseAllowPrivateRepositoryForkingPolicyValue "json:\"policyValue,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseAllowPrivateRepositoryForkingSettingInput implements the Input interface.
@@ -7990,7 +7990,7 @@ type UpdateEnterpriseDefaultRepositoryPermissionSettingInput struct {
 	// The value for the base repository permission setting on the enterprise.
 	SettingValue EnterpriseDefaultRepositoryPermissionSettingValue "json:\"settingValue\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseDefaultRepositoryPermissionSettingInput implements the Input interface.
@@ -8006,7 +8006,7 @@ type UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput struct {
 	// The value for the members can change repository visibility setting on the enterprise.
 	SettingValue EnterpriseEnabledDisabledSettingValue "json:\"settingValue\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseMembersCanChangeRepositoryVisibilitySettingInput implements the Input interface.
@@ -8020,17 +8020,17 @@ type UpdateEnterpriseMembersCanCreateRepositoriesSettingInput struct {
 	// The ID of the enterprise on which to set the members can create repositories setting.
 	EnterpriseID ID "json:\"enterpriseId\""
 	// Value for the members can create repositories setting on the enterprise. This or the granular public/private/internal allowed fields (but not both) must be provided.
-	SettingValue *EnterpriseMembersCanCreateRepositoriesSettingValue "json:\"settingValue\""
+	SettingValue *EnterpriseMembersCanCreateRepositoriesSettingValue "json:\"settingValue,omitempty\""
 	// When false, allow member organizations to set their own repository creation member privileges.
-	MembersCanCreateRepositoriesPolicyEnabled *bool "json:\"membersCanCreateRepositoriesPolicyEnabled\""
+	MembersCanCreateRepositoriesPolicyEnabled *bool "json:\"membersCanCreateRepositoriesPolicyEnabled,omitempty\""
 	// Allow members to create public repositories. Defaults to current value.
-	MembersCanCreatePublicRepositories *bool "json:\"membersCanCreatePublicRepositories\""
+	MembersCanCreatePublicRepositories *bool "json:\"membersCanCreatePublicRepositories,omitempty\""
 	// Allow members to create private repositories. Defaults to current value.
-	MembersCanCreatePrivateRepositories *bool "json:\"membersCanCreatePrivateRepositories\""
+	MembersCanCreatePrivateRepositories *bool "json:\"membersCanCreatePrivateRepositories,omitempty\""
 	// Allow members to create internal repositories. Defaults to current value.
-	MembersCanCreateInternalRepositories *bool "json:\"membersCanCreateInternalRepositories\""
+	MembersCanCreateInternalRepositories *bool "json:\"membersCanCreateInternalRepositories,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseMembersCanCreateRepositoriesSettingInput implements the Input interface.
@@ -8046,7 +8046,7 @@ type UpdateEnterpriseMembersCanDeleteIssuesSettingInput struct {
 	// The value for the members can delete issues setting on the enterprise.
 	SettingValue EnterpriseEnabledDisabledSettingValue "json:\"settingValue\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseMembersCanDeleteIssuesSettingInput implements the Input interface.
@@ -8062,7 +8062,7 @@ type UpdateEnterpriseMembersCanDeleteRepositoriesSettingInput struct {
 	// The value for the members can delete repositories setting on the enterprise.
 	SettingValue EnterpriseEnabledDisabledSettingValue "json:\"settingValue\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseMembersCanDeleteRepositoriesSettingInput implements the Input interface.
@@ -8078,7 +8078,7 @@ type UpdateEnterpriseMembersCanInviteCollaboratorsSettingInput struct {
 	// The value for the members can invite collaborators setting on the enterprise.
 	SettingValue EnterpriseEnabledDisabledSettingValue "json:\"settingValue\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseMembersCanInviteCollaboratorsSettingInput implements the Input interface.
@@ -8094,7 +8094,7 @@ type UpdateEnterpriseMembersCanMakePurchasesSettingInput struct {
 	// The value for the members can make purchases setting on the enterprise.
 	SettingValue EnterpriseMembersCanMakePurchasesSettingValue "json:\"settingValue\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseMembersCanMakePurchasesSettingInput implements the Input interface.
@@ -8110,7 +8110,7 @@ type UpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput struct {
 	// The value for the members can update protected branches setting on the enterprise.
 	SettingValue EnterpriseEnabledDisabledSettingValue "json:\"settingValue\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseMembersCanUpdateProtectedBranchesSettingInput implements the Input interface.
@@ -8126,7 +8126,7 @@ type UpdateEnterpriseMembersCanViewDependencyInsightsSettingInput struct {
 	// The value for the members can view dependency insights setting on the enterprise.
 	SettingValue EnterpriseEnabledDisabledSettingValue "json:\"settingValue\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseMembersCanViewDependencyInsightsSettingInput implements the Input interface.
@@ -8142,7 +8142,7 @@ type UpdateEnterpriseOrganizationProjectsSettingInput struct {
 	// The value for the organization projects setting on the enterprise.
 	SettingValue EnterpriseEnabledDisabledSettingValue "json:\"settingValue\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseOrganizationProjectsSettingInput implements the Input interface.
@@ -8160,7 +8160,7 @@ type UpdateEnterpriseOwnerOrganizationRoleInput struct {
 	// The role to assume in the organization.
 	OrganizationRole RoleInOrganization "json:\"organizationRole\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseOwnerOrganizationRoleInput implements the Input interface.
@@ -8174,15 +8174,15 @@ type UpdateEnterpriseProfileInput struct {
 	// The Enterprise ID to update.
 	EnterpriseID ID "json:\"enterpriseId\""
 	// The name of the enterprise.
-	Name *string "json:\"name\""
+	Name *string "json:\"name,omitempty\""
 	// The description of the enterprise.
-	Description *string "json:\"description\""
+	Description *string "json:\"description,omitempty\""
 	// The URL of the enterprise's website.
-	WebsiteURL *string "json:\"websiteUrl\""
+	WebsiteURL *string "json:\"websiteUrl,omitempty\""
 	// The location of the enterprise.
-	Location *string "json:\"location\""
+	Location *string "json:\"location,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseProfileInput implements the Input interface.
@@ -8198,7 +8198,7 @@ type UpdateEnterpriseRepositoryProjectsSettingInput struct {
 	// The value for the repository projects setting on the enterprise.
 	SettingValue EnterpriseEnabledDisabledSettingValue "json:\"settingValue\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseRepositoryProjectsSettingInput implements the Input interface.
@@ -8214,7 +8214,7 @@ type UpdateEnterpriseTeamDiscussionsSettingInput struct {
 	// The value for the team discussions setting on the enterprise.
 	SettingValue EnterpriseEnabledDisabledSettingValue "json:\"settingValue\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseTeamDiscussionsSettingInput implements the Input interface.
@@ -8230,7 +8230,7 @@ type UpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput struct {
 	// The value for the two factor authentication required setting on the enterprise.
 	SettingValue EnterpriseEnabledSettingValue "json:\"settingValue\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnterpriseTwoFactorAuthenticationRequiredSettingInput implements the Input interface.
@@ -8244,11 +8244,11 @@ type UpdateEnvironmentInput struct {
 	// The node ID of the environment.
 	EnvironmentID ID "json:\"environmentId\""
 	// The wait timer in minutes.
-	WaitTimer *int "json:\"waitTimer\""
+	WaitTimer *int "json:\"waitTimer,omitempty\""
 	// The ids of users or teams that can approve deployments to this environment.
-	Reviewers *[]ID "json:\"reviewers\""
+	Reviewers *[]ID "json:\"reviewers,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateEnvironmentInput implements the Input interface.
@@ -8264,7 +8264,7 @@ type UpdateIPAllowListEnabledSettingInput struct {
 	// The value for the IP allow list enabled setting.
 	SettingValue IPAllowListEnabledSettingValue "json:\"settingValue\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateIPAllowListEnabledSettingInput implements the Input interface.
@@ -8280,11 +8280,11 @@ type UpdateIPAllowListEntryInput struct {
 	// An IP address or range of addresses in CIDR notation.
 	AllowListValue string "json:\"allowListValue\""
 	// An optional name for the IP allow list entry.
-	Name *string "json:\"name\""
+	Name *string "json:\"name,omitempty\""
 	// Whether the IP allow list entry is active when an IP allow list is enabled.
 	IsActive bool "json:\"isActive\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateIPAllowListEntryInput implements the Input interface.
@@ -8300,7 +8300,7 @@ type UpdateIPAllowListForInstalledAppsEnabledSettingInput struct {
 	// The value for the IP allow list configuration for installed GitHub Apps setting.
 	SettingValue IPAllowListForInstalledAppsEnabledSettingValue "json:\"settingValue\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateIPAllowListForInstalledAppsEnabledSettingInput implements the Input interface.
@@ -8316,7 +8316,7 @@ type UpdateIssueCommentInput struct {
 	// The updated text of the comment.
 	Body string "json:\"body\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateIssueCommentInput implements the Input interface.
@@ -8330,21 +8330,21 @@ type UpdateIssueInput struct {
 	// The ID of the Issue to modify.
 	ID ID "json:\"id\""
 	// The title for the issue.
-	Title *string "json:\"title\""
+	Title *string "json:\"title,omitempty\""
 	// The body for the issue description.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// An array of Node IDs of users for this issue.
-	AssigneeIDs *[]ID "json:\"assigneeIds\""
+	AssigneeIDs *[]ID "json:\"assigneeIds,omitempty\""
 	// The Node ID of the milestone for this issue.
-	MilestoneID *ID "json:\"milestoneId\""
+	MilestoneID *ID "json:\"milestoneId,omitempty\""
 	// An array of Node IDs of labels for this issue.
-	LabelIDs *[]ID "json:\"labelIds\""
+	LabelIDs *[]ID "json:\"labelIds,omitempty\""
 	// The desired issue state.
-	State *IssueState "json:\"state\""
+	State *IssueState "json:\"state,omitempty\""
 	// An array of Node IDs for projects associated with this issue.
-	ProjectIDs *[]ID "json:\"projectIds\""
+	ProjectIDs *[]ID "json:\"projectIds,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateIssueInput implements the Input interface.
@@ -8360,7 +8360,7 @@ type UpdateNotificationRestrictionSettingInput struct {
 	// The value for the restrict notifications setting.
 	SettingValue NotificationRestrictionSettingValue "json:\"settingValue\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateNotificationRestrictionSettingInput implements the Input interface.
@@ -8376,7 +8376,7 @@ type UpdateOrganizationAllowPrivateRepositoryForkingSettingInput struct {
 	// Enable forking of private repositories in the organization?.
 	ForkingEnabled bool "json:\"forkingEnabled\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateOrganizationAllowPrivateRepositoryForkingSettingInput implements the Input interface.
@@ -8392,7 +8392,7 @@ type UpdateOrganizationWebCommitSignoffSettingInput struct {
 	// Enable signoff on web-based commits for repositories in the organization?.
 	WebCommitSignoffRequired bool "json:\"webCommitSignoffRequired\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateOrganizationWebCommitSignoffSettingInput implements the Input interface.
@@ -8418,11 +8418,11 @@ type UpdateProjectCardInput struct {
 	// The ProjectCard ID to update.
 	ProjectCardID ID "json:\"projectCardId\""
 	// Whether or not the ProjectCard should be archived.
-	IsArchived *bool "json:\"isArchived\""
+	IsArchived *bool "json:\"isArchived,omitempty\""
 	// The note of ProjectCard.
-	Note *string "json:\"note\""
+	Note *string "json:\"note,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateProjectCardInput implements the Input interface.
@@ -8438,7 +8438,7 @@ type UpdateProjectColumnInput struct {
 	// The name of project column.
 	Name string "json:\"name\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateProjectColumnInput implements the Input interface.
@@ -8452,15 +8452,15 @@ type UpdateProjectInput struct {
 	// The Project ID to update.
 	ProjectID ID "json:\"projectId\""
 	// The name of project.
-	Name *string "json:\"name\""
+	Name *string "json:\"name,omitempty\""
 	// The description of project.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// Whether the project is open or closed.
-	State *ProjectState "json:\"state\""
+	State *ProjectState "json:\"state,omitempty\""
 	// Whether the project is public or not.
-	Public *bool "json:\"public\""
+	Public *bool "json:\"public,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateProjectInput implements the Input interface.
@@ -8476,7 +8476,7 @@ type UpdateProjectV2CollaboratorsInput struct {
 	// The collaborators to update.
 	Collaborators []ProjectV2Collaborator "json:\"collaborators\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateProjectV2CollaboratorsInput implements the Input interface.
@@ -8490,13 +8490,13 @@ type UpdateProjectV2DraftIssueInput struct {
 	// The ID of the draft issue to update.
 	DraftIssueID ID "json:\"draftIssueId\""
 	// The title of the draft issue.
-	Title *string "json:\"title\""
+	Title *string "json:\"title,omitempty\""
 	// The body of the draft issue.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// The IDs of the assignees of the draft issue.
-	AssigneeIDs *[]ID "json:\"assigneeIds\""
+	AssigneeIDs *[]ID "json:\"assigneeIds,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateProjectV2DraftIssueInput implements the Input interface.
@@ -8510,17 +8510,17 @@ type UpdateProjectV2Input struct {
 	// The ID of the Project to update.
 	ProjectID ID "json:\"projectId\""
 	// Set the title of the project.
-	Title *string "json:\"title\""
+	Title *string "json:\"title,omitempty\""
 	// Set the short description of the project.
-	ShortDescription *string "json:\"shortDescription\""
+	ShortDescription *string "json:\"shortDescription,omitempty\""
 	// Set the readme description of the project.
-	Readme *string "json:\"readme\""
+	Readme *string "json:\"readme,omitempty\""
 	// Set the project to closed or open.
-	Closed *bool "json:\"closed\""
+	Closed *bool "json:\"closed,omitempty\""
 	// Set the project to public or private.
-	Public *bool "json:\"public\""
+	Public *bool "json:\"public,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateProjectV2Input implements the Input interface.
@@ -8540,7 +8540,7 @@ type UpdateProjectV2ItemFieldValueInput struct {
 	// The value which will be set on the field.
 	Value ProjectV2FieldValue "json:\"value\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateProjectV2ItemFieldValueInput implements the Input interface.
@@ -8556,9 +8556,9 @@ type UpdateProjectV2ItemPositionInput struct {
 	// The ID of the item to be moved.
 	ItemID ID "json:\"itemId\""
 	// The ID of the item to position this item after. If omitted or set to null the item will be moved to top.
-	AfterID *ID "json:\"afterId\""
+	AfterID *ID "json:\"afterId,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateProjectV2ItemPositionInput implements the Input interface.
@@ -8572,9 +8572,9 @@ type UpdatePullRequestBranchInput struct {
 	// The Node ID of the pull request.
 	PullRequestID ID "json:\"pullRequestId\""
 	// The head ref oid for the upstream branch.
-	ExpectedHeadOid *GitObjectID "json:\"expectedHeadOid\""
+	ExpectedHeadOid *GitObjectID "json:\"expectedHeadOid,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdatePullRequestBranchInput implements the Input interface.
@@ -8589,25 +8589,25 @@ type UpdatePullRequestInput struct {
 	PullRequestID ID "json:\"pullRequestId\""
 	// The name of the branch you want your changes pulled into. This should be an existing branch
 	// on the current repository.
-	BaseRefName *string "json:\"baseRefName\""
+	BaseRefName *string "json:\"baseRefName,omitempty\""
 	// The title of the pull request.
-	Title *string "json:\"title\""
+	Title *string "json:\"title,omitempty\""
 	// The contents of the pull request.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// The target state of the pull request.
-	State *PullRequestUpdateState "json:\"state\""
+	State *PullRequestUpdateState "json:\"state,omitempty\""
 	// Indicates whether maintainers can modify the pull request.
-	MaintainerCanModify *bool "json:\"maintainerCanModify\""
+	MaintainerCanModify *bool "json:\"maintainerCanModify,omitempty\""
 	// An array of Node IDs of users for this pull request.
-	AssigneeIDs *[]ID "json:\"assigneeIds\""
+	AssigneeIDs *[]ID "json:\"assigneeIds,omitempty\""
 	// The Node ID of the milestone for this pull request.
-	MilestoneID *ID "json:\"milestoneId\""
+	MilestoneID *ID "json:\"milestoneId,omitempty\""
 	// An array of Node IDs of labels for this pull request.
-	LabelIDs *[]ID "json:\"labelIds\""
+	LabelIDs *[]ID "json:\"labelIds,omitempty\""
 	// An array of Node IDs for projects associated with this pull request.
-	ProjectIDs *[]ID "json:\"projectIds\""
+	ProjectIDs *[]ID "json:\"projectIds,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdatePullRequestInput implements the Input interface.
@@ -8623,7 +8623,7 @@ type UpdatePullRequestReviewCommentInput struct {
 	// The text of the comment.
 	Body string "json:\"body\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdatePullRequestReviewCommentInput implements the Input interface.
@@ -8639,7 +8639,7 @@ type UpdatePullRequestReviewInput struct {
 	// The contents of the pull request review body.
 	Body string "json:\"body\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdatePullRequestReviewInput implements the Input interface.
@@ -8655,9 +8655,9 @@ type UpdateRefInput struct {
 	// The GitObjectID that the Ref shall be updated to target.
 	Oid GitObjectID "json:\"oid\""
 	// Permit updates of branch Refs that are not fast-forwards?.
-	Force *bool "json:\"force\""
+	Force *bool "json:\"force,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateRefInput implements the Input interface.
@@ -8671,23 +8671,23 @@ type UpdateRepositoryInput struct {
 	// The ID of the repository to update.
 	RepositoryID ID "json:\"repositoryId\""
 	// The new name of the repository.
-	Name *string "json:\"name\""
+	Name *string "json:\"name,omitempty\""
 	// A new description for the repository. Pass an empty string to erase the existing description.
-	Description *string "json:\"description\""
+	Description *string "json:\"description,omitempty\""
 	// Whether this repository should be marked as a template such that anyone who can access it can create new repositories with the same files and directory structure.
-	Template *bool "json:\"template\""
+	Template *bool "json:\"template,omitempty\""
 	// The URL for a web page about this repository. Pass an empty string to erase the existing URL.
-	HomepageURL *URI "json:\"homepageUrl\""
+	HomepageURL *URI "json:\"homepageUrl,omitempty\""
 	// Indicates if the repository should have the wiki feature enabled.
-	HasWikiEnabled *bool "json:\"hasWikiEnabled\""
+	HasWikiEnabled *bool "json:\"hasWikiEnabled,omitempty\""
 	// Indicates if the repository should have the issues feature enabled.
-	HasIssuesEnabled *bool "json:\"hasIssuesEnabled\""
+	HasIssuesEnabled *bool "json:\"hasIssuesEnabled,omitempty\""
 	// Indicates if the repository should have the project boards feature enabled.
-	HasProjectsEnabled *bool "json:\"hasProjectsEnabled\""
+	HasProjectsEnabled *bool "json:\"hasProjectsEnabled,omitempty\""
 	// Indicates if the repository should have the discussions feature enabled.
-	HasDiscussionsEnabled *bool "json:\"hasDiscussionsEnabled\""
+	HasDiscussionsEnabled *bool "json:\"hasDiscussionsEnabled,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateRepositoryInput implements the Input interface.
@@ -8701,19 +8701,19 @@ type UpdateRepositoryRulesetInput struct {
 	// The global relay id of the repository ruleset to be updated.
 	RepositoryRulesetID ID "json:\"repositoryRulesetId\""
 	// The name of the ruleset.
-	Name *string "json:\"name\""
+	Name *string "json:\"name,omitempty\""
 	// The target of the ruleset.
-	Target *RepositoryRulesetTarget "json:\"target\""
+	Target *RepositoryRulesetTarget "json:\"target,omitempty\""
 	// The list of rules for this ruleset.
-	Rules *[]RepositoryRuleInput "json:\"rules\""
+	Rules *[]RepositoryRuleInput "json:\"rules,omitempty\""
 	// The list of conditions for this ruleset.
-	Conditions *RepositoryRuleConditionsInput "json:\"conditions\""
+	Conditions *RepositoryRuleConditionsInput "json:\"conditions,omitempty\""
 	// The enforcement level for this ruleset.
-	Enforcement *RuleEnforcement "json:\"enforcement\""
+	Enforcement *RuleEnforcement "json:\"enforcement,omitempty\""
 	// A list of actors that are allowed to bypass rules in this ruleset.
-	BypassActors *[]RepositoryRulesetBypassActorInput "json:\"bypassActors\""
+	BypassActors *[]RepositoryRulesetBypassActorInput "json:\"bypassActors,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateRepositoryRulesetInput implements the Input interface.
@@ -8729,7 +8729,7 @@ type UpdateRepositoryWebCommitSignoffSettingInput struct {
 	// Indicates if the repository should require signoff on web-based commits.
 	WebCommitSignoffRequired bool "json:\"webCommitSignoffRequired\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateRepositoryWebCommitSignoffSettingInput implements the Input interface.
@@ -8741,19 +8741,19 @@ func (UpdateRepositoryWebCommitSignoffSettingInput) isInput() {}
 // UpdateSponsorshipPreferencesInput is an autogenerated input type of UpdateSponsorshipPreferences.
 type UpdateSponsorshipPreferencesInput struct {
 	// The ID of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorLogin is not given.
-	SponsorID *ID "json:\"sponsorId\""
+	SponsorID *ID "json:\"sponsorId,omitempty\""
 	// The username of the user or organization who is acting as the sponsor, paying for the sponsorship. Required if sponsorId is not given.
-	SponsorLogin *string "json:\"sponsorLogin\""
+	SponsorLogin *string "json:\"sponsorLogin,omitempty\""
 	// The ID of the user or organization who is receiving the sponsorship. Required if sponsorableLogin is not given.
-	SponsorableID *ID "json:\"sponsorableId\""
+	SponsorableID *ID "json:\"sponsorableId,omitempty\""
 	// The username of the user or organization who is receiving the sponsorship. Required if sponsorableId is not given.
-	SponsorableLogin *string "json:\"sponsorableLogin\""
+	SponsorableLogin *string "json:\"sponsorableLogin,omitempty\""
 	// Whether the sponsor should receive email updates from the sponsorable.
-	ReceiveEmails *bool "json:\"receiveEmails\""
+	ReceiveEmails *bool "json:\"receiveEmails,omitempty\""
 	// Specify whether others should be able to see that the sponsor is sponsoring the sponsorable. Public visibility still does not reveal which tier is used.
-	PrivacyLevel *SponsorshipPrivacy "json:\"privacyLevel\""
+	PrivacyLevel *SponsorshipPrivacy "json:\"privacyLevel,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateSponsorshipPreferencesInput implements the Input interface.
@@ -8769,7 +8769,7 @@ type UpdateSubscriptionInput struct {
 	// The new state of the subscription.
 	State SubscriptionState "json:\"state\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateSubscriptionInput implements the Input interface.
@@ -8785,9 +8785,9 @@ type UpdateTeamDiscussionCommentInput struct {
 	// The updated text of the comment.
 	Body string "json:\"body\""
 	// The current version of the body content.
-	BodyVersion *string "json:\"bodyVersion\""
+	BodyVersion *string "json:\"bodyVersion,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateTeamDiscussionCommentInput implements the Input interface.
@@ -8801,15 +8801,15 @@ type UpdateTeamDiscussionInput struct {
 	// The Node ID of the discussion to modify.
 	ID ID "json:\"id\""
 	// The updated title of the discussion.
-	Title *string "json:\"title\""
+	Title *string "json:\"title,omitempty\""
 	// The updated text of the discussion.
-	Body *string "json:\"body\""
+	Body *string "json:\"body,omitempty\""
 	// The current version of the body content. If provided, this update operation will be rejected if the given version does not match the latest version on the server.
-	BodyVersion *string "json:\"bodyVersion\""
+	BodyVersion *string "json:\"bodyVersion,omitempty\""
 	// If provided, sets the pinned state of the updated discussion.
-	Pinned *bool "json:\"pinned\""
+	Pinned *bool "json:\"pinned,omitempty\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateTeamDiscussionInput implements the Input interface.
@@ -8827,7 +8827,7 @@ type UpdateTeamsRepositoryInput struct {
 	// Permission that should be granted to the teams.
 	Permission RepositoryPermission "json:\"permission\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateTeamsRepositoryInput implements the Input interface.
@@ -8843,7 +8843,7 @@ type UpdateTopicsInput struct {
 	// An array of topic names.
 	TopicNames []string "json:\"topicNames\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that UpdateTopicsInput implements the Input interface.
@@ -8919,7 +8919,7 @@ type VerifyVerifiableDomainInput struct {
 	// The ID of the verifiable domain to verify.
 	ID ID "json:\"id\""
 	// A unique identifier for the client performing the mutation.
-	ClientMutationID *string "json:\"clientMutationId\""
+	ClientMutationID *string "json:\"clientMutationId,omitempty\""
 }
 
 // Compile-time assertion that VerifyVerifiableDomainInput implements the Input interface.
