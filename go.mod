@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/jbrekelmans/go-graphql v0.0.0-20230705014049-f3986d2b84be
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.9.0
 )
 
 require (
